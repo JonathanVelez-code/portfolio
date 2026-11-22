@@ -1,0 +1,318 @@
+/* Site-specific overrides, loaded after the theme stylesheet on every page */
+
+/* ---------- Header: email + profile links ---------- */
+.personal-profile .profile-email {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 14px;
+  margin: 0;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.personal-profile .profile-email__label {
+  font-weight: 700;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.personal-profile .profile-email a {
+  color: #ffffff;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  overflow-wrap: anywhere;
+  transition: border-color 0.2s;
+}
+
+.personal-profile .profile-email a:hover,
+.personal-profile .profile-email a:focus-visible {
+  color: #ffffff;
+  border-bottom-color: #ffffff;
+}
+
+.personal-profile .profile-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  list-style: none;
+  margin: 8px 0 35px;
+  padding: 0;
+}
+
+.personal-profile .profile-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 20px;
+  border: 1px solid rgba(255, 255, 255, 0.75);
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 15px;
+  line-height: 22px;
+  text-decoration: none;
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.personal-profile .profile-links a i {
+  font-size: 20px;
+}
+
+.personal-profile .profile-links a:hover,
+.personal-profile .profile-links a:focus-visible {
+  background-color: #ffffff;
+  border-color: #ffffff;
+  color: var(--accent, #6d56c1);
+  text-decoration: none;
+}
+
+/* ---------- Contact section ---------- */
+.contacts.contacts--centered {
+  margin-top: 8px;
+  text-align: center;
+}
+
+.contacts--centered .contacts__intro {
+  max-width: 520px;
+  margin: 0 auto 28px;
+  font-size: 18px;
+  line-height: 28px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.contacts--centered .contacts__email {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Roboto Mono', monospace;
+  font-size: clamp(16px, 4.4vw, 22px);
+  line-height: 1.4;
+  color: #ffffff;
+  text-decoration: none;
+  padding: 6px 4px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.35);
+  overflow-wrap: anywhere;
+  transition: border-color 0.2s;
+}
+
+.contacts--centered .contacts__email:hover,
+.contacts--centered .contacts__email:focus-visible {
+  color: #ffffff;
+  text-decoration: none;
+  border-bottom-color: #ffffff;
+}
+
+.contacts--centered .contacts__social {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+  list-style: none;
+  margin: 32px 0 0;
+  padding: 0;
+}
+
+.contacts--centered .contacts__social li {
+  margin: 0;
+}
+
+.contacts--centered .contacts__social a {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 150px;
+  justify-content: center;
+  padding: 12px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  border-radius: 999px;
+  color: #ffffff;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 16px;
+  line-height: 24px;
+  text-decoration: none;
+  background-color: rgba(255, 255, 255, 0.08);
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.contacts--centered .contacts__social a i {
+  font-size: 20px;
+}
+
+.contacts--centered .contacts__social a:hover,
+.contacts--centered .contacts__social a:focus-visible {
+  background-color: #ffffff;
+  border-color: #ffffff;
+  color: var(--accent, #6d56c1);
+  text-decoration: none;
+}
+
+/* ---------- Footer ---------- */
+.footer.footer--contact {
+  position: relative; /* keeps it above the .background overlay */
+  z-index: 1;
+  top: 0;
+  opacity: 1;
+  margin: 56px auto 0;
+  padding: 24px 0 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+}
+
+.footer.footer--contact p {
+  margin: 0;
+}
+
+@media (max-width: 575px) {
+  .contacts--centered .contacts__social a {
+    min-width: 0;
+    width: 100%;
+  }
+
+  .contacts--centered .contacts__social li {
+    flex: 1 1 140px;
+  }
+}
+
+/* ---------- Project page header ---------- */
+.background.blog-header {
+  height: auto;
+  min-height: 220px;
+  z-index: auto;
+  display: flex;
+  align-items: flex-end;
+}
+
+.blog-header .blog-header__inner {
+  position: relative; /* above the gradient overlay */
+  z-index: 1;
+  padding-top: 90px;
+  padding-bottom: 28px;
+}
+
+.blog-header .blog-header__name {
+  display: inline-block;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 30px;
+  line-height: 38px;
+  font-weight: 700;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.blog-header .blog-header__name:hover {
+  color: #ffffff;
+  text-decoration: underline;
+}
+
+.blog-header .blog-header__role {
+  margin: 6px 0 0;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* ---------- Skills ---------- */
+.skill-groups {
+  margin-top: 10px;
+}
+
+.skill-group {
+  margin-bottom: 28px;
+}
+
+.skill-group .skill-group__title {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 13px;
+  line-height: 20px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent, #6d56c1);
+  margin: 0 0 12px;
+}
+
+.skill-group .tags {
+  margin: 0;
+  padding: 0;
+}
+
+/* ---------- Project cards with charts ---------- */
+.project-card .project-card__img--chart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  border: 1px solid #f1f1f1;
+  border-right: 0;
+  padding: 16px;
+}
+
+.project-card .project-card__img--chart img {
+  height: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 767px) {
+  .project-card .project-card__img--chart {
+    border-right: 1px solid #f1f1f1;
+    border-bottom: 0;
+  }
+}
+
+/* ---------- Project write-ups ---------- */
+.article h3 {
+  font-family: 'Roboto Mono', monospace;
+  font-size: 18px;
+  line-height: 28px;
+  font-weight: 700;
+  margin: 32px 0 12px;
+}
+
+.article .article__list {
+  padding-left: 20px;
+  margin-bottom: 20px;
+}
+
+.article .article__list li {
+  margin-bottom: 8px;
+  line-height: 1.6;
+}
+
+.article .article__figure--chart img {
+  max-width: 860px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.article .article__figure--chart figcaption {
+  text-align: center;
+}
+
+/* ---------- Profile photo on phones and tablets ---------- */
+/* The theme hides the avatar below 990px; show a smaller round version instead. */
+@media (max-width: 990px) {
+  .personal-profile .personal-profile__avatar {
+    display: block;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .personal-profile .personal-profile__avatar img {
+    width: 128px;
+    height: 128px;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0.85);
+    object-position: center 20%;
+    top: 0;
+    margin-top: 0;
+  }
+
+  .personal-profile .personal-profile__name {
+    margin-top: 20px;
+  }
+}

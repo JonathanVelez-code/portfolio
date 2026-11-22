@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="Analysis of 119,390 real hotel bookings: cancellations, lost revenue, an XGBoost cancellation model and overbooking recommendations. A project by Jonathan Velez.">
+    <meta name="author" content="Jonathan Velez">
+    <script>try{var t=localStorage.getItem('jv-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+    <title>Hotel Booking Cancellation &amp; Revenue Analysis | Jonathan Velez</title>
+    <link rel="canonical" href="https://jonathanwvelez.com/project4.html">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Hotel Booking Cancellation &amp; Revenue Analysis | Jonathan Velez">
+    <meta property="og:description" content="Analysis of 119,390 real hotel bookings: cancellations, lost revenue, an XGBoost cancellation model and overbooking recommendations. A project by Jonathan Velez.">
+    <meta property="og:url" content="https://jonathanwvelez.com/project4.html">
+    <meta property="og:image" content="https://jonathanwvelez.com/assets/img/hotel_gains_curve.png">
+    <script>if(location.protocol==='http:'&&!/^(localhost|127\.0\.0\.1)$/.test(location.hostname)){location.replace('https://'+location.host+location.pathname+location.search+location.hash);}</script>
+    <link rel="stylesheet" href="assets/css/color.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono|Inconsolata" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/2.0.46/css/materialdesignicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/themes.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+
+<body>
+
+    <!--Switcher-->
+    <div class="style-switcher">
+        <span class="style-switcher__control" role="button" tabindex="0" aria-label="Change color theme"></span>
+        <div class="style-switcher__list" role="group" aria-label="Color themes">
+            <button type="button" class="style-switcher__link" data-theme="violet" title="Violet" aria-label="Violet theme" aria-pressed="false"></button>
+            <button type="button" class="style-switcher__link" data-theme="ocean" title="Ocean" aria-label="Ocean theme" aria-pressed="false"></button>
+            <button type="button" class="style-switcher__link" data-theme="sunset" title="Sunset" aria-label="Sunset theme" aria-pressed="false"></button>
+            <button type="button" class="style-switcher__link" data-theme="emerald" title="Emerald" aria-label="Emerald theme" aria-pressed="false"></button>
+            <button type="button" class="style-switcher__link" data-theme="berry" title="Berry" aria-label="Berry theme" aria-pressed="false"></button>
+            <button type="button" class="style-switcher__link" data-theme="aurora" title="Aurora" aria-label="Aurora theme" aria-pressed="false"></button>
+        </div>
+    </div>
+    <!--Switcher-->
+
+    <!--Main menu-->
+    <div class="menu">
+        <div class="container">
+            <div class="row">
+                <div class="menu__wrapper d-none d-lg-block col-md-12">
+                    <nav class="">
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="#other_posts">Other projects</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="menu__wrapper col-md-12 d-lg-none">
+                    <div class="menu__mobile-button">
+                        <span><i class="fa fa-bars" aria-hidden="true"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Main menu-->
+
+    <!-- Mobile menu -->
+    <div class="mobile-menu d-lg-none">
+        <div class="container">
+            <div class="mobile-menu__close">
+                <span><i class="mdi mdi-close" aria-hidden="true"></i></span>
+            </div>
+            <nav class="mobile-menu__wrapper">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#other_posts">Other projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <!-- Mobile menu -->
+
+    <!--Header-->
+    <header class="background blog-header" style="background-image: url(assets/img/img_bg_main.jpg)">
+        <div class="container blog-header__inner">
+            <a class="blog-header__name" href="index.html">Jonathan Velez</a>
+            <p class="blog-header__role">Software Engineer, Data Analyst</p>
+        </div>
+    </header>
+    <!--Header-->
+
+    <!--Article-->
+    <div class="container">
+        <div class="article">
+            <div class="row">
+                <div class="col-md-12">
+                    <a class="article__back-link" href="index.html"><i class="fa fa-long-arrow-left"
+                            aria-hidden="true"></i>Back</a>
+                    <h2 class="article__title">Hotel Booking Cancellation &amp; Revenue Analysis</h2>
+
+                    <div class="portfolio-modal__stack">
+                        <div class="expanding">
+                            <p>Stack:</p>
+                            <a href="https://github.com/JonathanVelez-code/hotel-cancellation-analysis" target="_blank" rel="noopener noreferrer"
+                                class="project-card__link">View Code</a>
+                        </div>
+                        <ul class="tags spacing">
+                            <li>Python</li>
+                            <li>pandas</li>
+                            <li>XGBoost</li>
+                            <li>scikit-learn</li>
+                            <li>SQL</li>
+                            <li>DuckDB</li>
+                            <li>Power BI</li>
+                        </ul>
+                    </div>
+                    <p>How much revenue do cancellations cost two real hotels, which bookings are most likely to cancel, and what should revenue managers do about it? This project uses the public <em>Hotel Booking Demand</em> dataset: 119,390 real bookings from a resort hotel and a city hotel in Portugal, for arrivals from July 2015 to August 2017.</p>
+                    <h3>What it does</h3>
+                    <ul class="article__list">
+                        <li>Analyzes cancellations and lost revenue in SQL with DuckDB, by hotel, booking window, segment and month.</li>
+                        <li>Predicts cancellations with logistic regression and XGBoost, using only what's known when the booking is made. Columns that leak the outcome, such as reservation status, assigned room and country, are left out.</li>
+                        <li>Validates by time: trains on arrivals through December 2016 and tests on January to August 2017.</li>
+                        <li>Turns the predictions into decisions: which bookings to target, how many rooms to overbook safely, and where a deposit would help.</li>
+                    </ul>
+                    <h3>Results</h3>
+                    <ul class="article__list">
+                        <li><strong>37% of bookings cancelled</strong>, about 16.7M in booked room revenue.</li>
+                        <li>City Hotel cancellations rise from 12% for bookings made within a week to 71% for bookings made a year or more ahead.</li>
+                        <li><strong>XGBoost ROC AUC of 0.83</strong>, vs. 0.82 for logistic regression and 0.66 for a booking-window rule.</li>
+                        <li>The riskiest 20% of bookings hold <strong>44% of all cancellations</strong>.</li>
+                        <li>The weekly cancellation forecast has 12.7% error vs. 16.1% for historical averages. A 95%-confidence overbooking level would have overshot in only 2.8% of hotel-weeks.</li>
+                    </ul>
+                    <figure class="article__figure--chart">
+                        <img src="assets/img/hotel_cancel_by_lead_time.png" alt="Chart of cancellation rate by booking window for each hotel" loading="lazy">
+                        <figcaption>Cancellation rate by booking window</figcaption>
+                    </figure>
+                    <figure class="article__figure--chart">
+                        <img src="assets/img/hotel_gains_curve.png" alt="Gains curve: share of cancellations captured by targeting the riskiest bookings" loading="lazy">
+                        <figcaption>Targeting the riskiest bookings</figcaption>
+                    </figure>
+                    <figure class="article__figure--chart">
+                        <img src="assets/img/hotel_weekly_overbooking_city.png" alt="Chart of weekly cancellations and the safe overbooking level at the City Hotel" loading="lazy">
+                        <figcaption>Weekly cancellations and a safe overbooking level (City Hotel)</figcaption>
+                    </figure>
+                    <h3>Limits</h3>
+                    <p>It covers two hotels in one country from 2015 to 2017, so the patterns may not carry over elsewhere. The forecast ran low in spring 2017, when cancellations rose above 2016 levels, and the value of a deposit policy can only be proven with a real test.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Article-->
+
+    <!--Other Posts-->
+    <section id="posts" class="container section">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 id="other_posts" class="section__title">Other Projects</h2>
+            </div>
+        </div>
+        <div class="portfolio-cards">
+            <div class="row project-card" data-href="project3.html">
+              <div class="col-md-6 col-lg-5 project-card__img project-card__img--chart">
+                <img src="assets/img/cruise_error_by_horizon.png" alt="Bar chart: forecast error by days before sailing, XGBoost model vs last-year baseline" loading="lazy">
+              </div>
+              <div class="col-md-6 col-lg-7 project-card__info">
+                <h3 class="project-card__title">Cruise Cabin Pricing &amp; Demand Forecasting</h3>
+                <p class="project-card__description">
+                  A revenue management pipeline on 500K synthetic cruise bookings. The XGBoost demand forecast has 62% less error than a last-year-pace baseline, and a pricing A/B test uses CUPED and a power analysis.
+                </p>
+                <p class="project-card__stack">Used stack:</p>
+                <ul class="tags">
+                  <li>Python</li>
+                  <li>pandas</li>
+                  <li>XGBoost</li>
+                  <li>SQL</li>
+                  <li>DuckDB</li>
+                  <li>Power BI</li>
+                  <li>GitHub Actions</li>
+                </ul>
+                <a href="https://github.com/JonathanVelez-code/cruise-pricing-forecast" class="project-card__link" target="_blank" rel="noopener noreferrer">View Code</a>
+              </div>
+            </div>
+            <div class="row project-card" data-href="project1.html">
+              <div class="col-md-6 col-lg-5 project-card__img">
+                <img src="assets/img/project1.jpg" alt="Aircraft Logistics Management System maintenance calendar" loading="lazy">
+              </div>
+              <div class="col-md-6 col-lg-7 project-card__info">
+                <h3 class="project-card__title">Aircraft Logistics Management System (US Air Force)</h3>
+                <p class="project-card__description">
+                  A Django application built for the Air Force. My team of three built it from scratch, from the design to the functionality...
+                </p>
+                <p class="project-card__stack">Used stack:</p>
+                <ul class="tags">
+                  <li>Django</li>
+                  <li>Python</li>
+                  <li>Html5</li>
+                  <li>Css3</li>
+                  <li>JavaScript</li>
+                </ul>
+                <a href="https://github.com/JonathanVelez-code/ROUS" class="project-card__link" target="_blank" rel="noopener noreferrer">View Code</a>
+              </div>
+            </div>
+            <div class="row project-card" data-href="project2.html">
+              <div class="col-md-6 col-lg-5 project-card__img">
+                <img src="assets/img/project2.jpg" alt="SipSpot coffee shop app home page" loading="lazy">
+              </div>
+              <div class="col-md-6 col-lg-7 project-card__info">
+                <h3 class="project-card__title">SipSpot Coffee Shops</h3>
+                <p class="project-card__description">
+                  SipSpot bridges the gap between large, established coffee brands...
+                </p>
+                <p class="project-card__stack">Used stack:</p>
+                <ul class="tags">
+                  <li>React</li>
+                  <li>Node</li>
+                  <li>Express</li>
+                  <li>JavaScript</li>
+                  <li>MongoDB</li>
+                  <li>Jest</li>
+                  <li>Bootstrap</li>
+                </ul>
+                <a href="https://github.com/JonathanVelez-code/SipSpot" class="project-card__link" target="_blank" rel="noopener noreferrer">View Code</a>
+              </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!--Other Posts-->
+
+    <!--Contact-->
+    <div class="background" style="background-image: url(assets/img/img_bg_main.jpg)">
+      <div id="contact" class="container section">
+        <div class="row">
+          <div class="col-md-12">
+            <p id="contacts_header" class="section__title text_center">Get in touch</p>
+          </div>
+        </div>
+        <div class="row contacts contacts--centered">
+          <div class="col-12">
+            <a class="contacts__email" href="mailto:VelezWJonathan@gmail.com"><i class="fa-solid fa-envelope" aria-hidden="true"></i>VelezWJonathan@gmail.com</a>
+            <ul class="contacts__social">
+              <li><a href="https://www.linkedin.com/in/jonathanwilliamvelez/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin" aria-hidden="true"></i>LinkedIn</a></li>
+              <li><a href="https://github.com/JonathanVelez-code" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i>GitHub</a></li>
+            </ul>
+          </div>
+        </div>
+        <footer class="footer footer--contact">
+          <p>&copy; 2026 Jonathan Velez. All Rights Reserved</p>
+        </footer>
+      </div>
+    </div>
+    <!--Contact-->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="assets/js/menu.js"></script>
+    <script src="assets/js/jquery.waypoints.js"></script>
+    <script src="assets/js/section.js"></script>
+    <script src="assets/js/mobile-menu.js"></script>
+    <script src="assets/js/style-switcher.js"></script>
+</body>
+
+</html>

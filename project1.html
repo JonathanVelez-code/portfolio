@@ -5,22 +5,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <title>Jonathan Velez Portfolio</title>
+    <meta name="description" content="Aircraft Logistics Management System: a Django app built by a team of three for the US Air Force to schedule aircraft maintenance and manage parts inventory. A project by Jonathan Velez.">
+    <meta name="author" content="Jonathan Velez">
+    <script>try{var t=localStorage.getItem('jv-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+    <title>Aircraft Logistics Management System | Jonathan Velez</title>
+    <link rel="canonical" href="https://jonathanwvelez.com/project1.html">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Aircraft Logistics Management System | Jonathan Velez">
+    <meta property="og:description" content="Aircraft Logistics Management System: a Django app built by a team of three for the US Air Force to schedule aircraft maintenance and manage parts inventory. A project by Jonathan Velez.">
+    <meta property="og:url" content="https://jonathanwvelez.com/project1.html">
+    <meta property="og:image" content="https://jonathanwvelez.com/assets/img/project1.jpg">
+    <script>if(location.protocol==='http:'&&!/^(localhost|127\.0\.0\.1)$/.test(location.hostname)){location.replace('https://'+location.host+location.pathname+location.search+location.hash);}</script>
     <link rel="stylesheet" href="assets/css/color.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono|Inconsolata" rel="stylesheet">
-    <link href="https://cdn.materialdesignicons.com/2.0.46/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/2.0.46/css/materialdesignicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/themes.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
 </head>
 
 <body>
 
     <!--Switcher-->
     <div class="style-switcher">
-        <span class="style-switcher__control"></span>
-        <div class="style-switcher__list">
-            <a class="style-switcher__link style-switcher__link--color"></a>
-            <a class="style-switcher__link style-switcher__link--mono"></a>
+        <span class="style-switcher__control" role="button" tabindex="0" aria-label="Change color theme"></span>
+        <div class="style-switcher__list" role="group" aria-label="Color themes">
+            <button type="button" class="style-switcher__link" data-theme="violet" title="Violet" aria-label="Violet theme" aria-pressed="false"></button>
+            <button type="button" class="style-switcher__link" data-theme="ocean" title="Ocean" aria-label="Ocean theme" aria-pressed="false"></button>
+            <button type="button" class="style-switcher__link" data-theme="sunset" title="Sunset" aria-label="Sunset theme" aria-pressed="false"></button>
+            <button type="button" class="style-switcher__link" data-theme="emerald" title="Emerald" aria-label="Emerald theme" aria-pressed="false"></button>
+            <button type="button" class="style-switcher__link" data-theme="berry" title="Berry" aria-label="Berry theme" aria-pressed="false"></button>
+            <button type="button" class="style-switcher__link" data-theme="aurora" title="Aurora" aria-label="Aurora theme" aria-pressed="false"></button>
         </div>
     </div>
     <!--Switcher-->
@@ -33,7 +49,7 @@
                     <nav class="">
                         <ul>
                             <li><a href="index.html">Home</a></li>
-                            <li><a href="#posts">other posts</a></li>
+                            <li><a href="#other_posts">Other projects</a></li>
                             <li><a href="#contact">Contact</a></li>
                         </ul>
                     </nav>
@@ -57,7 +73,7 @@
             <nav class="mobile-menu__wrapper">
                 <ul>
                     <li><a href="index.html">Home</a></li>
-                    <li><a href="#other_posts">other projects</a></li>
+                    <li><a href="#other_posts">Other projects</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -67,6 +83,10 @@
 
     <!--Header-->
     <header class="background blog-header" style="background-image: url(assets/img/img_bg_main.jpg)">
+        <div class="container blog-header__inner">
+            <a class="blog-header__name" href="index.html">Jonathan Velez</a>
+            <p class="blog-header__role">Software Engineer, Data Analyst</p>
+        </div>
     </header>
     <!--Header-->
 
@@ -78,12 +98,12 @@
                     <a class="article__back-link" href="index.html"><i class="fa fa-long-arrow-left"
                             aria-hidden="true"></i>Back</a>
                     <h2 class="article__title">Aircraft Logistics Management System (US Air Force)</h2>
-                    <!--<p class="article_date">April, 20, 2017</p>-->
+
                     <div class="portfolio-modal__stack">
                         <div class="expanding">
                             <p>Stack:</p>
-                            <a href="https://rousapp-a8a46816adf1.herokuapp.com/" target="_blank"
-                                class="project-card__link">Live Site</a>
+                            <a href="https://github.com/JonathanVelez-code/ROUS" target="_blank" rel="noopener noreferrer"
+                                class="project-card__link">View Code</a>
                         </div>
                         <ul class="tags spacing">
                             <li>Django</li>
@@ -96,11 +116,11 @@
                     <p> Aircraft Logistics Management is a Django application built for the Air Force Logistics team
                         Tesseract. My team of three built this project from scratch, from the design to the
                         functionality. This aircraft maintenance application required heavy lifting to schedule a fleet
-                        of aircrafts, keeping track of when the next tune-up is needed, viewing upcoming maintenance and
+                        of aircraft, keeping track of when the next tune-up is needed, viewing upcoming maintenance and
                         deployment on the calendar, and managing inventory for parts.</p>
                     <figure>
-                        <img src="assets/img/calendar_page.png">
-                        <figcaption>Calendar aircraft dates to be maintaince</figcaption>
+                        <img src="assets/img/calendar_page.jpg" alt="Calendar of scheduled aircraft maintenance" loading="lazy">
+                        <figcaption>Calendar of scheduled aircraft maintenance</figcaption>
                     </figure>
                     <h3>Project Purpose and Goal</h3>
                     <p> This project involved three key phases of development. In the initial phase, my team and I
@@ -118,17 +138,17 @@
                         the DRY (Don't Repeat Yourself) principle enabled us to efficiently develop and complete the
                         application within a tight timeframe.</p>
                     <figure>
-                        <img src="assets/img/import_page.png">
+                        <img src="assets/img/import_page.jpg" alt="Page for importing aircraft maintenance logs" loading="lazy">
                         <figcaption>Import aircraft maintenance logs</figcaption>
                     </figure>
                     <h3>Problems and Thought Process</h3>
-                    <p> Like most projects, We ran into a few bumps along the way, one particularly difficult area was
+                    <p> Like most projects, we ran into a few bumps along the way, one particularly difficult area was
                         the organization of the old maintenance document to be integrated into the database. Requiring
                         an algorithmic solution to parse through unnecessary data points within the document. Also,
                         developed a new algorithmic solution to apply the Air Force’s Theory of Constraints methodology.
                     </p>
                     <figure>
-                        <img src="assets/img/schedule_page.png">
+                        <img src="assets/img/schedule_page.jpg" alt="Aircraft maintenance scheduling table" loading="lazy">
                         <figcaption>Aircraft maintenance scheduling table</figcaption>
                     </figure>
                     <h3>Lessons Learned</h3>
@@ -151,171 +171,107 @@
             </div>
         </div>
         <div class="portfolio-cards">
-            <div class="row project-card" data-toggle="modal" data-href="project2.html"
-                data-portfolio-tag="mobile apps">
-                <div class="col-md-6 col-lg-5 project-card__img">
-                    <img class="" src="assets/img/project2.png" alt="project-img">
-                </div>
-                <div class="col-md-6 col-lg-7 project-card__info">
-                    <h3 class="project-card__title">SipSpot Coffee shops</h3>
-                    <p class="project-card__description">
-                        SipSpot bridges the gap between large, established coffee brands...
-                    </p>
-                    <p class="project-card__stack">Used stack:</p>
-                    <ul class="tags">
-                        <li>Node</li>
-                        <li>Express</li>
-                        <li>JavaScript</li>
-                        <li>mongoDB</li>
-                        <li>Jest</li>
-                        <li>Bootstrap</li>
-                    </ul>
-                    <a href="https://sipspot-72c22915190e.herokuapp.com/" class="project-card__link"
-                        target="_blank">Live Site</a>
-                </div>
+            <div class="row project-card" data-href="project3.html">
+              <div class="col-md-6 col-lg-5 project-card__img project-card__img--chart">
+                <img src="assets/img/cruise_error_by_horizon.png" alt="Bar chart: forecast error by days before sailing, XGBoost model vs last-year baseline" loading="lazy">
+              </div>
+              <div class="col-md-6 col-lg-7 project-card__info">
+                <h3 class="project-card__title">Cruise Cabin Pricing &amp; Demand Forecasting</h3>
+                <p class="project-card__description">
+                  A revenue management pipeline on 500K synthetic cruise bookings. The XGBoost demand forecast has 62% less error than a last-year-pace baseline, and a pricing A/B test uses CUPED and a power analysis.
+                </p>
+                <p class="project-card__stack">Used stack:</p>
+                <ul class="tags">
+                  <li>Python</li>
+                  <li>pandas</li>
+                  <li>XGBoost</li>
+                  <li>SQL</li>
+                  <li>DuckDB</li>
+                  <li>Power BI</li>
+                  <li>GitHub Actions</li>
+                </ul>
+                <a href="https://github.com/JonathanVelez-code/cruise-pricing-forecast" class="project-card__link" target="_blank" rel="noopener noreferrer">View Code</a>
+              </div>
             </div>
-            <!-- <div class="row project-card" data-toggle="modal" data-href="blog.html" data-portfolio-tag="mobile apps">
-                <div class="col-md-6 col-lg-5 project-card__img">
-                    <img class="" src="assets/img/img_project_2_mono.png" alt="project-img">
-                </div>
-                <div class="col-md-6 col-lg-7 project-card__info">
-                    <h3 class="project-card__title">Web app page for trevel company</h3>
-                    <p class="project-card__description">
-                        Preference any astonished unreserved mrs. Prosperous understood middletons in conviction an
-                        uncommonly do. Supposing so be resolving breakfast am or perfectly. Is drew am hill from mr.
-                    </p>
-                    <p class="project-card__stack">Used stack:</p>
-                    <ul class="tags">
-                        <li>Django</li>
-                        <li>Python</li>
-                        <li>Html5</li>
-                        <li>Css3</li>
-                        <li>JavaScript</li>
-                    </ul>
-                    <a href="https://www.google.com/" class="project-card__link">Live Site</a>
-                </div>
-            </div> -->
+            <div class="row project-card" data-href="project4.html">
+              <div class="col-md-6 col-lg-5 project-card__img project-card__img--chart">
+                <img src="assets/img/hotel_gains_curve.png" alt="Gains curve: the riskiest 20% of bookings hold 44% of cancellations" loading="lazy">
+              </div>
+              <div class="col-md-6 col-lg-7 project-card__info">
+                <h3 class="project-card__title">Hotel Booking Cancellation &amp; Revenue Analysis</h3>
+                <p class="project-card__description">
+                  An analysis of 119,390 real hotel bookings: SQL on cancellations and lost revenue, a cancellation model built without leaky features (ROC AUC 0.83), and overbooking and deposit recommendations.
+                </p>
+                <p class="project-card__stack">Used stack:</p>
+                <ul class="tags">
+                  <li>Python</li>
+                  <li>pandas</li>
+                  <li>XGBoost</li>
+                  <li>scikit-learn</li>
+                  <li>SQL</li>
+                  <li>DuckDB</li>
+                  <li>Power BI</li>
+                </ul>
+                <a href="https://github.com/JonathanVelez-code/hotel-cancellation-analysis" class="project-card__link" target="_blank" rel="noopener noreferrer">View Code</a>
+              </div>
+            </div>
+            <div class="row project-card" data-href="project2.html">
+              <div class="col-md-6 col-lg-5 project-card__img">
+                <img src="assets/img/project2.jpg" alt="SipSpot coffee shop app home page" loading="lazy">
+              </div>
+              <div class="col-md-6 col-lg-7 project-card__info">
+                <h3 class="project-card__title">SipSpot Coffee Shops</h3>
+                <p class="project-card__description">
+                  SipSpot bridges the gap between large, established coffee brands...
+                </p>
+                <p class="project-card__stack">Used stack:</p>
+                <ul class="tags">
+                  <li>React</li>
+                  <li>Node</li>
+                  <li>Express</li>
+                  <li>JavaScript</li>
+                  <li>MongoDB</li>
+                  <li>Jest</li>
+                  <li>Bootstrap</li>
+                </ul>
+                <a href="https://github.com/JonathanVelez-code/SipSpot" class="project-card__link" target="_blank" rel="noopener noreferrer">View Code</a>
+              </div>
+            </div>
         </div>
-        <!--
-        <div class="row posts">
-            <div class="col-md-5 mr-auto">
-                <div class="posts__item">
-                    <a href="">
-                        <h3 class="posts__title">What’s new in the IT Industry?</h3>
-                        <p class="posts__description">Invitation excellence imprudence understood it continuing to.
-                            Ye show done an into.</p>
-                    </a>
-                </div>
-                <div class="posts__item">
-                    <a href="">
-                        <h3 class="posts__title">How I organize my work with code</h3>
-                        <p class="posts__description">Invitation excellence imprudence understood it continuing to.
-                            Ye show done an into.</p>
-                    </a>
-                </div>
-                <div class="posts__item">
-                    <a href="">
-                        <h3 class="posts__title">How to use css-preprocessor</h3>
-                        <p class="posts__description">Invitation excellence imprudence understood it continuing to.
-                            Ye show done an into.</p>
-                    </a>
-                </div>
-            </div>
-            <div class="col-md-5 mr-auto">
-                <div class="posts__item">
-                    <a href="">
-                        <h3 class="posts__title">What’s new in the IT Industry?</h3>
-                        <p class="posts__description">Invitation excellence imprudence understood it continuing to.
-                            Ye show done an into.</p>
-                    </a>
-                </div>
-                <div class="posts__item">
-                    <a href="">
-                        <h3 class="posts__title">How I organize my work with code</h3>
-                        <p class="posts__description">Invitation excellence imprudence understood it continuing to.
-                            Ye show done an into.</p>
-                    </a>
-                </div>
-                <div class="posts__item">
-                    <a href="">
-                        <h3 class="posts__title">How to use css-preprocessor</h3>
-                        <p class="posts__description">Invitation excellence imprudence understood it continuing to.
-                            Ye show done an into.</p>
-                    </a>
-                </div>
-            </div>
-        </div>-->
+
     </section>
 
     <!--Other Posts-->
 
     <!--Contact-->
     <div class="background" style="background-image: url(assets/img/img_bg_main.jpg)">
-        <div id="contact" class="container section">
-            <div class="row">
-                <div class="col-md-12">
-                    <p id="contacts_header" class="section__title text_center">Get in touch</p>
-                </div>
-            </div>
-            <div class="row contacts">
-                <div class="col-md-5 col-lg-4">
-                    <div class="contacts__list">
-                        <dl class="contact-list">
-                            <dt>Phone:</dt>
-                            <dd><a href="tel:82344563333">8 (234) 456-33-33</a></dd>
-                            <dt>Email:</dt>
-                            <dd><a href="mailto:mail@mail.com">mail@mail.com</a></dd>
-                        </dl>
-                    </div>
-                    <div class="contacts__social">
-                        <ul>
-                            <li><a href="">Linkedin</a></li>
-                            <li><a href="">GitHub</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <!--<div class="col-md-7 col-lg-5">
-          <div class="contacts__form">
-            <p class="contacts__form-title">Or just write me a letter here_</p>
-            <form class="js-form">
-              <div class="form-group">
-                <input class="form-field js-field-name" type="text" placeholder="Your name" required>
-                <span class="form-validation"></span>
-                <span class="form-invalid-icon"><i class="mdi mdi-close" aria-hidden="true"></i></span>
-              </div>
-              <div class="form-group">
-                <input class="form-field js-field-email" type="email" placeholder="Your e-mail" required>
-                <span class="form-validation"></span>
-                <span class="form-invalid-icon"><i class="mdi mdi-close" aria-hidden="true"></i></span>
-              </div>
-              <div class="form-group">
-                <textarea class="form-field js-field-message" placeholder="Type the message here" required></textarea>
-                <span class="form-validation"></span>
-                <span class="form-invalid-icon"><i class="mdi mdi-close" aria-hidden="true"></i></span>
-              </div>
-              <button class="site-btn site-btn--form" type="submit" value="Send">Send</button>
-            </form>
-          </div>-->
-                <div class="footer">
-                    <p>© 2024 Jonathan Velez. All Rights Reserved</p>
-                </div>
-            </div>
+      <div id="contact" class="container section">
+        <div class="row">
+          <div class="col-md-12">
+            <p id="contacts_header" class="section__title text_center">Get in touch</p>
+          </div>
         </div>
-    </div>
+        <div class="row contacts contacts--centered">
+          <div class="col-12">
+            <a class="contacts__email" href="mailto:VelezWJonathan@gmail.com"><i class="fa-solid fa-envelope" aria-hidden="true"></i>VelezWJonathan@gmail.com</a>
+            <ul class="contacts__social">
+              <li><a href="https://www.linkedin.com/in/jonathanwilliamvelez/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin" aria-hidden="true"></i>LinkedIn</a></li>
+              <li><a href="https://github.com/JonathanVelez-code" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i>GitHub</a></li>
+            </ul>
+          </div>
+        </div>
+        <footer class="footer footer--contact">
+          <p>&copy; 2026 Jonathan Velez. All Rights Reserved</p>
+        </footer>
+      </div>
     </div>
     <!--Contact-->
 
-    <script src="assets/js/jquery-2.2.4.min.js"></script>
-    <script src="assets/js/popper.min.js"></script>
-    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="assets/js/menu.js"></script>
     <script src="assets/js/jquery.waypoints.js"></script>
-    <script src="assets/js/progress-list.js"></script>
     <script src="assets/js/section.js"></script>
     <script src="assets/js/mobile-menu.js"></script>
-    <script src="assets/js/contacts.js"></script>
-    <script src="assets/js/mbclicker.min.js"></script>
-    <script src="assets/js/site-btn.js"></script>
     <script src="assets/js/style-switcher.js"></script>
 </body>
 

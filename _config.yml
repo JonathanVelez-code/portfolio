@@ -1,0 +1,3 @@
+exclude:
+  - assets/scss
+  - README.md
