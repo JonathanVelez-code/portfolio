@@ -164,28 +164,32 @@
                     </figure>
 
                     <h3 id="data">Where the data comes from</h3>
-                    <p>Every number below is public and can be traced to its filing. The full write-up, with every source URL, field definition and processing step, is in <a href="https://github.com/JonathanVelez-code/cruise-pricing-forecast/blob/main/docs/DATA_SOURCES.md" target="_blank" rel="noopener noreferrer">DATA_SOURCES.md</a> on GitHub.</p>
+                    <p>Every number below is public and traced to its source. Links go straight to the filings on the SEC's EDGAR system and to the government and university data pages, and full citations are under <a href="#citations">Sources and citations</a> at the end of this page.</p>
+                    <ul class="article__list">
+                        <li><a href="https://github.com/JonathanVelez-code/cruise-pricing-forecast/blob/main/docs/DATA_SOURCES.md" target="_blank" rel="noopener noreferrer"><strong>DATA_SOURCES.md</strong></a>: the full methodology, field definitions, processing steps and references.</li>
+                        <li><a href="https://github.com/JonathanVelez-code/cruise-pricing-forecast/blob/main/docs/SEC_FILINGS.md" target="_blank" rel="noopener noreferrer"><strong>SEC_FILINGS.md</strong></a>: <strong>all 102 SEC filings used</strong> (84 10-Qs and 18 10-Ks), each with a direct link and citation.</li>
+                    </ul>
                     <h4>Companies</h4>
                     <div class="data-table">
                     <table>
-                        <thead><tr><th>Company</th><th>Ticker</th><th>SEC CIK</th><th>Main brands</th><th>Capacity metric</th><th>Quarters</th></tr></thead>
+                        <thead><tr><th>Company</th><th>Ticker</th><th>SEC CIK</th><th>Main brands</th><th>Capacity metric</th><th>Quarters</th><th>Filings used</th></tr></thead>
                         <tbody>
-                            <tr><td><strong>Royal Caribbean Cruises Ltd.</strong></td><td>RCL</td><td>0000884887</td><td>Royal Caribbean International, Celebrity, Silversea</td><td>APCD</td><td>39 (Q1 2017 &ndash; Q3 2026)</td></tr>
-                            <tr><td><strong>Norwegian Cruise Line Holdings Ltd.</strong></td><td>NCLH</td><td>0001513761</td><td>Norwegian, Oceania, Regent Seven Seas</td><td>Capacity Days</td><td>34 (Q1 2016 &ndash; Q3 2026)</td></tr>
-                            <tr><td><strong>Carnival Corporation &amp; plc</strong></td><td>CCL</td><td>0000815097</td><td>Carnival, Princess, Holland America, AIDA, Costa, P&amp;O, Cunard, Seabourn</td><td>ALBDs</td><td>29 (Aug 2016 &ndash; Aug 2026)</td></tr>
+                            <tr><td><strong>Royal Caribbean Cruises Ltd.</strong></td><td>RCL</td><td><a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0000884887&amp;type=10-&amp;dateb=&amp;owner=include&amp;count=40" target="_blank" rel="noopener noreferrer">0000884887</a></td><td>Royal Caribbean International, Celebrity, Silversea</td><td>APCD</td><td>39 (Q1 2017 &ndash; Q3 2026)</td><td><a href="https://github.com/JonathanVelez-code/cruise-pricing-forecast/blob/main/docs/SEC_FILINGS.md#royal-caribbean-cruises-ltd-cik-0000884887" target="_blank" rel="noopener noreferrer">30 10-Qs + 9 10-Ks</a></td></tr>
+                            <tr><td><strong>Norwegian Cruise Line Holdings Ltd.</strong></td><td>NCLH</td><td><a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0001513761&amp;type=10-&amp;dateb=&amp;owner=include&amp;count=40" target="_blank" rel="noopener noreferrer">0001513761</a></td><td>Norwegian, Oceania, Regent Seven Seas</td><td>Capacity Days</td><td>34 (Q1 2016 &ndash; Q3 2026)</td><td><a href="https://github.com/JonathanVelez-code/cruise-pricing-forecast/blob/main/docs/SEC_FILINGS.md#norwegian-cruise-line-holdings-ltd-cik-0001513761" target="_blank" rel="noopener noreferrer">28 10-Qs + 6 10-Ks</a></td></tr>
+                            <tr><td><strong>Carnival Corporation &amp; plc</strong></td><td>CCL</td><td><a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0000815097&amp;type=10-&amp;dateb=&amp;owner=include&amp;count=40" target="_blank" rel="noopener noreferrer">0000815097</a></td><td>Carnival, Princess, Holland America, AIDA, Costa, P&amp;O, Cunard, Seabourn</td><td>ALBDs</td><td>29 (Aug 2016 &ndash; Aug 2026)</td><td><a href="https://github.com/JonathanVelez-code/cruise-pricing-forecast/blob/main/docs/SEC_FILINGS.md#carnival-corporation--plc-cik-0000815097" target="_blank" rel="noopener noreferrer">26 10-Qs + 3 10-Ks</a></td></tr>
                         </tbody>
                     </table>
                     </div>
-                    <p>102 company-quarters in total, 83 of them normal operations. The 19 quarters from March 2020 to December 2022, when sailings were suspended and then ramped back up, are flagged and left out of averages and models.</p>
+                    <p>102 company-quarters in total, from 102 SEC filings, 83 of them normal operations. The 19 quarters from March 2020 to December 2022, when sailings were suspended and then ramped back up, are flagged and left out of averages and models.</p>
                     <h4>Sources</h4>
                     <div class="data-table">
                     <table>
-                        <thead><tr><th>Source</th><th>What it provides</th><th>Coverage</th></tr></thead>
+                        <thead><tr><th>Source</th><th>What it provides</th><th>Coverage</th><th>Links</th></tr></thead>
                         <tbody>
-                            <tr><td><strong>SEC EDGAR</strong> 10-Q and 10-K filings</td><td>Operating statistics: passengers carried, passenger cruise days, capacity days, occupancy</td><td>About 130 filings, 2016&ndash;2026</td></tr>
-                            <tr><td><strong>SEC XBRL</strong> company facts API</td><td>Total revenue per quarter</td><td>2016 &ndash; Q3 2026</td></tr>
-                            <tr><td><strong>U.S. Bureau of Labor Statistics</strong></td><td>CPI for airline fares (<code>CUSR0000SETG01</code>) and the unemployment rate (<code>LNS14000000</code>)</td><td>Monthly, Jan 2015 &ndash; Oct 2026</td></tr>
-                            <tr><td><strong>University of Michigan</strong> Surveys of Consumers</td><td>Index of Consumer Sentiment</td><td>Monthly, Jan 2014 &ndash; Nov 2026</td></tr>
+                            <tr><td><strong>SEC EDGAR</strong> 10-Q and 10-K filings</td><td>Operating statistics: passengers carried, passenger cruise days, capacity days, occupancy</td><td>102 filings, 2016&ndash;2026</td><td><a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0000884887&amp;type=10-&amp;dateb=&amp;owner=include&amp;count=40" target="_blank" rel="noopener noreferrer">Royal Caribbean</a> &middot; <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0001513761&amp;type=10-&amp;dateb=&amp;owner=include&amp;count=40" target="_blank" rel="noopener noreferrer">Norwegian</a> &middot; <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0000815097&amp;type=10-&amp;dateb=&amp;owner=include&amp;count=40" target="_blank" rel="noopener noreferrer">Carnival</a> &middot; <a href="https://github.com/JonathanVelez-code/cruise-pricing-forecast/blob/main/docs/SEC_FILINGS.md" target="_blank" rel="noopener noreferrer">all 102 filings</a></td></tr>
+                            <tr><td><strong>SEC XBRL</strong> company facts API</td><td>Total revenue per quarter</td><td>2016 &ndash; Q3 2026</td><td><a href="https://data.sec.gov/api/xbrl/companyfacts/CIK0000884887.json" target="_blank" rel="noopener noreferrer">Royal Caribbean</a> &middot; <a href="https://data.sec.gov/api/xbrl/companyfacts/CIK0001513761.json" target="_blank" rel="noopener noreferrer">Norwegian</a> &middot; <a href="https://data.sec.gov/api/xbrl/companyfacts/CIK0000815097.json" target="_blank" rel="noopener noreferrer">Carnival</a> &middot; <a href="https://www.sec.gov/search-filings/edgar-application-programming-interfaces" target="_blank" rel="noopener noreferrer">API docs</a></td></tr>
+                            <tr><td><strong>U.S. Bureau of Labor Statistics</strong></td><td>CPI for airline fares (<code>CUSR0000SETG01</code>) and the unemployment rate (<code>LNS14000000</code>)</td><td>Monthly, Jan 2015 &ndash; Oct 2026</td><td><a href="https://data.bls.gov/timeseries/CUSR0000SETG01" target="_blank" rel="noopener noreferrer">Airline fares CPI</a> &middot; <a href="https://data.bls.gov/timeseries/LNS14000000" target="_blank" rel="noopener noreferrer">Unemployment rate</a> &middot; <a href="https://www.bls.gov/developers/" target="_blank" rel="noopener noreferrer">BLS API</a></td></tr>
+                            <tr><td><strong>University of Michigan</strong> Surveys of Consumers</td><td>Index of Consumer Sentiment</td><td>Monthly, Jan 2014 &ndash; Nov 2026</td><td><a href="https://www.sca.isr.umich.edu/" target="_blank" rel="noopener noreferrer">Surveys of Consumers</a> &middot; <a href="https://www.sca.isr.umich.edu/files/tbmics.csv" target="_blank" rel="noopener noreferrer">data file</a></td></tr>
                         </tbody>
                     </table>
                     </div>
@@ -202,15 +206,15 @@
                     <h4>What the data looks like: latest quarter for each company</h4>
                     <div class="data-table">
                     <table>
-                        <thead><tr><th>Company</th><th>Quarter ending</th><th>Passengers</th><th>Passenger cruise days</th><th>Capacity days</th><th>Occupancy</th><th>Revenue</th><th>Revenue per passenger day</th></tr></thead>
+                        <thead><tr><th>Company</th><th>Quarter ending</th><th>Passengers</th><th>Passenger cruise days</th><th>Capacity days</th><th>Occupancy</th><th>Revenue</th><th>Revenue per passenger day</th><th>Source</th></tr></thead>
                         <tbody>
-                            <tr><td>Royal Caribbean</td><td>Sep 30, 2026</td><td>2,676,480</td><td>16,692,392</td><td>14,844,688</td><td>112.4%</td><td>$5.59B</td><td>$334.94</td></tr>
-                            <tr><td>Norwegian</td><td>Sep 30, 2026</td><td>983,214</td><td>7,204,938</td><td>6,766,454</td><td>106.5%</td><td>$2.95B</td><td>$408.99</td></tr>
-                            <tr><td>Carnival</td><td>Aug 31, 2026</td><td>3.9M</td><td>27.9M</td><td>24.9M</td><td>111.8%</td><td>$8.44B</td><td>$302.33</td></tr>
+                            <tr><td>Royal Caribbean</td><td>Sep 30, 2026</td><td>2,676,480</td><td>16,692,392</td><td>14,844,688</td><td>112.4%</td><td>$5.59B</td><td>$334.94</td><td><a href="https://www.sec.gov/Archives/edgar/data/884887/000088488726000044/rcl-20260930.htm" target="_blank" rel="noopener noreferrer">10-Q</a></td></tr>
+                            <tr><td>Norwegian</td><td>Sep 30, 2026</td><td>983,214</td><td>7,204,938</td><td>6,766,454</td><td>106.5%</td><td>$2.95B</td><td>$408.99</td><td><a href="https://www.sec.gov/Archives/edgar/data/1513761/000110465926120217/nclh-20260930x10q.htm" target="_blank" rel="noopener noreferrer">10-Q</a></td></tr>
+                            <tr><td>Carnival</td><td>Aug 31, 2026</td><td>3.9M</td><td>27.9M</td><td>24.9M</td><td>111.8%</td><td>$8.44B</td><td>$302.33</td><td><a href="https://www.sec.gov/Archives/edgar/data/815097/000081509726000107/ccl-20260831.htm" target="_blank" rel="noopener noreferrer">10-Q</a></td></tr>
                         </tbody>
                     </table>
                     </div>
-                    <p>Occupancy above 100% is normal for cruise lines: capacity counts two guests per cabin, and some cabins hold three or four.</p>
+                    <p>To check a number, open the filing and search for &ldquo;Passenger Cruise Days&rdquo; or &ldquo;Occupancy&rdquo;; the table is in Management&rsquo;s Discussion and Analysis. Occupancy above 100% is normal for cruise lines: capacity counts two guests per cabin, and some cabins hold three or four.</p>
                     <h4>What the real data shows: 2019 vs. the last four quarters</h4>
                     <div class="data-table">
                     <table>
@@ -222,7 +226,7 @@
                         </tbody>
                     </table>
                     </div>
-                    <p>Royal Caribbean grew revenue per guest-day the most of the three, while keeping its ships at least as full as in 2019. That growth is the work of pricing and revenue management.</p>
+                    <p>2019 averages use the four 2019 quarters (for example, Royal Caribbean&rsquo;s <a href="https://www.sec.gov/Archives/edgar/data/884887/000088488719000023/final2019q110q.htm" target="_blank" rel="noopener noreferrer">Q1</a>, <a href="https://www.sec.gov/Archives/edgar/data/884887/000088488719000042/a2019q210q.htm" target="_blank" rel="noopener noreferrer">Q2</a> and <a href="https://www.sec.gov/Archives/edgar/data/884887/000088488719000046/a2019q310q.htm" target="_blank" rel="noopener noreferrer">Q3</a> 10-Qs and its <a href="https://www.sec.gov/Archives/edgar/data/884887/000088488720000009/rcl-20191231.htm" target="_blank" rel="noopener noreferrer">2019 10-K</a>); the last four quarters run to Q3 2026. Royal Caribbean grew revenue per guest-day the most of the three, while keeping its ships at least as full as in 2019. That growth is the work of pricing and revenue management.</p>
                     <h4>How the real data is used</h4>
                     <ul class="article__list">
                         <li><strong>Real-data forecast:</strong> predicts next quarter's revenue per passenger day from the same quarter last year, recent growth, seasonality, and the economic indicators lagged one quarter, so only information available beforehand is used. The model is a damped growth trend plus a ridge-regression adjustment, tested walk-forward on Q2 2024 &ndash; Q3 2026 (28 company-quarters, 10 of them Royal Caribbean), with its settings chosen by a nested walk-forward inside the training data.</li>
@@ -239,6 +243,22 @@
                         <li>Carnival's fiscal quarters end in February, May, August and November, and are matched to the nearest calendar quarter.</li>
                         <li>The guests' response to price in the A/B test is simulated, so it demonstrates the method rather than a real result.</li>
                     </ul>
+
+                    <h3 id="citations">Sources and citations</h3>
+                    <p>All sources were retrieved in November 2026. A citation for each of the 102 SEC filings is in <a href="https://github.com/JonathanVelez-code/cruise-pricing-forecast/blob/main/docs/SEC_FILINGS.md#citations" target="_blank" rel="noopener noreferrer">SEC_FILINGS.md</a>.</p>
+                    <ol class="article__list citations">
+                        <li>Royal Caribbean Cruises Ltd. (2017&ndash;2026). <em>Forms 10-Q and 10-K</em> (CIK 0000884887). U.S. Securities and Exchange Commission. <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0000884887&amp;type=10-&amp;dateb=&amp;owner=include&amp;count=40" target="_blank" rel="noopener noreferrer">https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0000884887&amp;type=10-&amp;dateb=&amp;owner=include&amp;count=40</a></li>
+                        <li>Norwegian Cruise Line Holdings Ltd. (2016&ndash;2026). <em>Forms 10-Q and 10-K</em> (CIK 0001513761). U.S. Securities and Exchange Commission. <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0001513761&amp;type=10-&amp;dateb=&amp;owner=include&amp;count=40" target="_blank" rel="noopener noreferrer">https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0001513761&amp;type=10-&amp;dateb=&amp;owner=include&amp;count=40</a></li>
+                        <li>Carnival Corporation &amp; plc (2016&ndash;2026). <em>Forms 10-Q and 10-K</em> (CIK 0000815097). U.S. Securities and Exchange Commission. <a href="https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0000815097&amp;type=10-&amp;dateb=&amp;owner=include&amp;count=40" target="_blank" rel="noopener noreferrer">https://www.sec.gov/cgi-bin/browse-edgar?action=getcompany&amp;CIK=0000815097&amp;type=10-&amp;dateb=&amp;owner=include&amp;count=40</a></li>
+                        <li>Royal Caribbean Cruises Ltd. (2026). <em>Form 10-Q for the quarterly period ended September 30, 2026</em>. U.S. Securities and Exchange Commission. <a href="https://www.sec.gov/Archives/edgar/data/884887/000088488726000044/rcl-20260930.htm" target="_blank" rel="noopener noreferrer">https://www.sec.gov/Archives/edgar/data/884887/000088488726000044/rcl-20260930.htm</a></li>
+                        <li>Norwegian Cruise Line Holdings Ltd. (2026). <em>Form 10-Q for the quarterly period ended September 30, 2026</em>. U.S. Securities and Exchange Commission. <a href="https://www.sec.gov/Archives/edgar/data/1513761/000110465926120217/nclh-20260930x10q.htm" target="_blank" rel="noopener noreferrer">https://www.sec.gov/Archives/edgar/data/1513761/000110465926120217/nclh-20260930x10q.htm</a></li>
+                        <li>Carnival Corporation &amp; plc (2026). <em>Form 10-Q for the quarterly period ended August 31, 2026</em>. U.S. Securities and Exchange Commission. <a href="https://www.sec.gov/Archives/edgar/data/815097/000081509726000107/ccl-20260831.htm" target="_blank" rel="noopener noreferrer">https://www.sec.gov/Archives/edgar/data/815097/000081509726000107/ccl-20260831.htm</a></li>
+                        <li>Royal Caribbean Cruises Ltd. (2020). <em>Form 10-K for the fiscal year ended December 31, 2019</em>. U.S. Securities and Exchange Commission. <a href="https://www.sec.gov/Archives/edgar/data/884887/000088488720000009/rcl-20191231.htm" target="_blank" rel="noopener noreferrer">https://www.sec.gov/Archives/edgar/data/884887/000088488720000009/rcl-20191231.htm</a></li>
+                        <li>U.S. Securities and Exchange Commission. <em>EDGAR Application Programming Interfaces (submissions and XBRL company facts)</em>. <a href="https://www.sec.gov/search-filings/edgar-application-programming-interfaces" target="_blank" rel="noopener noreferrer">https://www.sec.gov/search-filings/edgar-application-programming-interfaces</a></li>
+                        <li>U.S. Bureau of Labor Statistics. <em>Consumer Price Index for All Urban Consumers: Airline Fares in U.S. City Average, Seasonally Adjusted</em> (Series CUSR0000SETG01). <a href="https://data.bls.gov/timeseries/CUSR0000SETG01" target="_blank" rel="noopener noreferrer">https://data.bls.gov/timeseries/CUSR0000SETG01</a></li>
+                        <li>U.S. Bureau of Labor Statistics. <em>Unemployment Rate, Seasonally Adjusted</em> (Series LNS14000000), Current Population Survey. <a href="https://data.bls.gov/timeseries/LNS14000000" target="_blank" rel="noopener noreferrer">https://data.bls.gov/timeseries/LNS14000000</a></li>
+                        <li>University of Michigan, Surveys of Consumers. <em>Index of Consumer Sentiment</em> (monthly). <a href="https://www.sca.isr.umich.edu/" target="_blank" rel="noopener noreferrer">https://www.sca.isr.umich.edu/</a></li>
+                    </ol>
                 </div>
             </div>
         </div>

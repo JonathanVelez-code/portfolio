@@ -359,3 +359,12 @@
   list-style: decimal;
   padding-left: 24px;
 }
+
+.article .citations li {
+  font-size: 14px;
+}
+
+.article .citations a,
+.article .data-table a {
+  overflow-wrap: anywhere;
+}
