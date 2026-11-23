@@ -119,6 +119,7 @@
                     <h3>What it does</h3>
                     <ul class="article__list">
                         <li>Pulls ten years of quarterly occupancy, passenger cruise days and revenue from three cruise lines' 10-Q and 10-K filings (SEC EDGAR), and tunes the synthetic data to match.</li>
+                        <li>Forecasts a major cruise line's <strong>real</strong> quarterly revenue per passenger day from its SEC filings plus BLS airfare prices, unemployment and University of Michigan consumer sentiment, tested one quarter at a time.</li>
                         <li>Cleans the raw bookings with a pandas ETL pipeline (510,409 rows in, 509,320 out) and logs every data-quality rule it applies.</li>
                         <li>Answers reporting questions in SQL with DuckDB: occupancy, revenue per cabin, new vs. repeat guests, and price by booking window.</li>
                         <li>Forecasts final occupancy for every sailing and cabin category with XGBoost, tested on the most recent six months of sailings.</li>
@@ -128,6 +129,7 @@
                     <h3>Results</h3>
                     <ul class="article__list">
                         <li>The synthetic load factor is <strong>within about 2 points of the real reported occupancy</strong> in every quarter: ships sail 107–112% full year-round, and seasonality shows up in price, not empty cabins.</li>
+                        <li>On real 2024–2026 quarters it never saw, the real-data forecast has <strong>1.2% error</strong>, vs. 1.6% for a trend baseline and 2.9% for same-quarter-last-year. Its settings are chosen only from earlier quarters, so the test never tuned the model.</li>
                         <li><strong>Forecast error of 3.3% vs. 8.0%</strong> for the last-year-pace baseline, 58% lower. Six months out, it's 4.0% vs. 17.6%.</li>
                         <li>The pricing test (+5% when a cabin category is at least 70% booked 60 days out) showed <strong>no significant lift</strong> (p = 0.43), so the recommendation is not to roll it out broadly.</li>
                         <li>CUPED cut the test's variance by 93%.</li>
@@ -139,6 +141,10 @@
                     <figure class="article__figure--chart">
                         <img src="assets/img/cruise_seasonality.png" alt="Chart: cabins sold stay near full every month while price per cabin-night swings with the season" loading="lazy">
                         <figcaption>Ships stay nearly full all year; price carries the seasonality</figcaption>
+                    </figure>
+                    <figure class="article__figure--chart">
+                        <img src="assets/img/cruise_real_forecast.png" alt="Chart: real quarterly revenue per passenger day vs. the model's one-quarter-ahead forecasts and two baselines" loading="lazy">
+                        <figcaption>Real-data forecast vs. two simple baselines, plus the next-quarter forecast</figcaption>
                     </figure>
                     <figure class="article__figure--chart">
                         <img src="assets/img/cruise_error_by_horizon.png" alt="Bar chart of forecast error by days before sailing, model vs. baseline" loading="lazy">
