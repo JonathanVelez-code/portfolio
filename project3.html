@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="Cruise cabin demand forecasting and a pricing A/B test on 510K synthetic bookings calibrated to real SEC filings, built with Python, XGBoost, SQL and Power BI. A project by Jonathan Velez.">
+    <meta name="description" content="Cruise revenue forecasting on real SEC data from Royal Caribbean, Carnival and Norwegian, plus demand forecasting and a pricing A/B test on 510K calibrated bookings, built with Python, XGBoost, SQL and Power BI. A project by Jonathan Velez.">
     <meta name="author" content="Jonathan Velez">
     <script>try{var t=localStorage.getItem('jv-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
     <title>Cruise Cabin Pricing &amp; Demand Forecasting | Jonathan Velez</title>
@@ -13,9 +13,9 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Cruise Cabin Pricing &amp; Demand Forecasting | Jonathan Velez">
-    <meta property="og:description" content="Cruise cabin demand forecasting and a pricing A/B test on 510K synthetic bookings calibrated to real SEC filings, built with Python, XGBoost, SQL and Power BI. A project by Jonathan Velez.">
+    <meta property="og:description" content="Cruise revenue forecasting on real SEC data from Royal Caribbean, Carnival and Norwegian, plus demand forecasting and a pricing A/B test on 510K calibrated bookings, built with Python, XGBoost, SQL and Power BI. A project by Jonathan Velez.">
     <meta property="og:url" content="https://jonathanwvelez.com/project3.html">
-    <meta property="og:image" content="https://jonathanwvelez.com/assets/img/cruise_error_by_horizon.png">
+    <meta property="og:image" content="https://jonathanwvelez.com/assets/img/cruise_real_forecast.png">
     <script>if(location.protocol==='http:'&&!/^(localhost|127\.0\.0\.1)$/.test(location.hostname)){location.replace('https://'+location.host+location.pathname+location.search+location.hash);}</script>
     <link rel="stylesheet" href="assets/css/color.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono|Inconsolata" rel="stylesheet">
@@ -115,40 +115,44 @@
                             <li>GitHub Actions</li>
                         </ul>
                     </div>
-                    <p>An end-to-end revenue management project for a cruise line. Cruise lines don't publish booking-level data, so the project generates about 510,000 synthetic bookings with seasonality, booking curves, dynamic pricing and cancellations, and calibrates them to real quarterly numbers from three major cruise lines' SEC filings. No real booking data is used, and the project isn't affiliated with any company.</p>
+                    <p>An end-to-end revenue management project for a cruise line, built on <strong>real public data from Royal Caribbean, Carnival and Norwegian</strong>. Ten years of their SEC filings drive a real-data forecast of Royal Caribbean's revenue per passenger day, and calibrate about 510,000 synthetic bookings. Cruise lines don't publish individual bookings, so the booking-level data is generated and tuned to match the real quarterly numbers. The project isn't affiliated with any of these companies.</p>
                     <h3>What it does</h3>
                     <ul class="article__list">
-                        <li>Pulls ten years of quarterly occupancy, passenger cruise days and revenue from three cruise lines' 10-Q and 10-K filings (SEC EDGAR), and tunes the synthetic data to match.</li>
-                        <li>Forecasts a major cruise line's <strong>real</strong> quarterly revenue per passenger day from its SEC filings plus BLS airfare prices, unemployment and University of Michigan consumer sentiment, tested one quarter at a time.</li>
-                        <li>Cleans the raw bookings with a pandas ETL pipeline (510,409 rows in, 509,320 out) and logs every data-quality rule it applies.</li>
+                        <li>Pulls <strong>102 quarters</strong> of real operating data (passengers, passenger cruise days, capacity, occupancy and revenue) from about 130 Royal Caribbean, Carnival and Norwegian 10-Q and 10-K filings on SEC EDGAR.</li>
+                        <li>Forecasts <strong>Royal Caribbean's real quarterly revenue per passenger day</strong> from those filings plus BLS airfare prices, the U.S. unemployment rate and University of Michigan consumer sentiment, tested one quarter at a time.</li>
+                        <li>Cleans the synthetic bookings with a pandas ETL pipeline (510,409 rows in, 509,320 out) and logs every data-quality rule it applies.</li>
                         <li>Answers reporting questions in SQL with DuckDB: occupancy, revenue per cabin, new vs. repeat guests, and price by booking window.</li>
                         <li>Forecasts final occupancy for every sailing and cabin category with XGBoost, tested on the most recent six months of sailings.</li>
                         <li>Runs a pricing A/B test with CUPED variance reduction and a power analysis.</li>
-                        <li>Presents everything in a 5-page Power BI dashboard, and reruns the whole pipeline every week with GitHub Actions.</li>
+                        <li>Presents everything in a 6-page Power BI dashboard, and reruns the whole pipeline every week with GitHub Actions.</li>
                     </ul>
                     <h3>Results</h3>
                     <ul class="article__list">
-                        <li>The synthetic load factor is <strong>within about 2 points of the real reported occupancy</strong> in every quarter: ships sail 107–112% full year-round, and seasonality shows up in price, not empty cabins.</li>
-                        <li>On real 2024–2026 quarters it never saw, the real-data forecast has <strong>1.2% error</strong>, vs. 1.6% for a trend baseline and 2.9% for same-quarter-last-year. Its settings are chosen only from earlier quarters, so the test never tuned the model.</li>
-                        <li><strong>Forecast error of 3.3% vs. 8.0%</strong> for the last-year-pace baseline, 58% lower. Six months out, it's 4.0% vs. 17.6%.</li>
-                        <li>The pricing test (+5% when a cabin category is at least 70% booked 60 days out) showed <strong>no significant lift</strong> (p = 0.43), so the recommendation is not to roll it out broadly.</li>
-                        <li>CUPED cut the test's variance by 93%.</li>
+                        <li>On real 2024&ndash;2026 quarters it never saw, the Royal Caribbean forecast has <strong>1.2% error</strong>, vs. 1.6% for a trend baseline and 2.9% for same-quarter-last-year. Its settings are chosen only from earlier quarters, so the test never tuned the model. <strong>Q4 2026 forecast: $283 per passenger day</strong> (80% range $278&ndash;$287).</li>
+                        <li><strong>Royal Caribbean's revenue per passenger day is up 27% since 2019</strong> ($244 &rarr; $310), while its occupancy stayed around 108&ndash;110%. Growth came from pricing, not from filling more cabins.</li>
+                        <li>The synthetic load factor is <strong>within about 2 points of Royal Caribbean's reported occupancy</strong> in every quarter (109.2% vs. 108.4% for the year).</li>
+                        <li><strong>Booking forecast error of 3.3% vs. 8.0%</strong> for the last-year-pace baseline, 58% lower. Six months out, it's 4.0% vs. 17.6%.</li>
+                        <li>The pricing test (+5% when a cabin category is at least 70% booked 60 days out) showed <strong>no significant lift</strong> (p = 0.43), so the recommendation is not to roll it out broadly. CUPED cut the test's variance by 93%.</li>
                     </ul>
                     <figure class="article__figure--chart">
+                        <img src="assets/img/cruise_real_forecast.png" alt="Chart: Royal Caribbean's real quarterly revenue per passenger day vs. the model's one-quarter-ahead forecasts and two baselines, 2024 to 2026, plus the Q4 2026 forecast" loading="lazy">
+                        <figcaption>Royal Caribbean: real revenue per passenger day vs. the model and two baselines, plus the Q4 2026 forecast</figcaption>
+                    </figure>
+                    <figure class="article__figure--chart">
+                        <img src="assets/img/cruise_powerbi_sec.jpg" alt="Power BI page: occupancy and revenue per passenger day by quarter for Royal Caribbean, Carnival and Norwegian, and the synthetic vs. real calibration" loading="lazy">
+                        <figcaption>Power BI: real SEC data for Royal Caribbean, Carnival and Norwegian, 2016&ndash;2026</figcaption>
+                    </figure>
+                    <figure class="article__figure--chart">
                         <img src="assets/img/cruise_powerbi_overview.jpg" alt="Power BI dashboard: cruise revenue overview with occupancy, load factor and seasonality" loading="lazy">
-                        <figcaption>Power BI dashboard: revenue overview</figcaption>
+                        <figcaption>Power BI: revenue overview of the booking-level data</figcaption>
                     </figure>
                     <figure class="article__figure--chart">
                         <img src="assets/img/cruise_seasonality.png" alt="Chart: cabins sold stay near full every month while price per cabin-night swings with the season" loading="lazy">
                         <figcaption>Ships stay nearly full all year; price carries the seasonality</figcaption>
                     </figure>
                     <figure class="article__figure--chart">
-                        <img src="assets/img/cruise_real_forecast.png" alt="Chart: real quarterly revenue per passenger day vs. the model's one-quarter-ahead forecasts and two baselines" loading="lazy">
-                        <figcaption>Real-data forecast vs. two simple baselines, plus the next-quarter forecast</figcaption>
-                    </figure>
-                    <figure class="article__figure--chart">
                         <img src="assets/img/cruise_error_by_horizon.png" alt="Bar chart of forecast error by days before sailing, model vs. baseline" loading="lazy">
-                        <figcaption>Forecast error by how far ahead the forecast is made</figcaption>
+                        <figcaption>Booking forecast error by how far ahead the forecast is made</figcaption>
                     </figure>
                     <figure class="article__figure--chart">
                         <img src="assets/img/cruise_pace_example.png" alt="Line chart of booking pace for one sailing compared with last year" loading="lazy">
@@ -158,8 +162,83 @@
                         <img src="assets/img/cruise_experiment_lift.png" alt="Chart of the pricing A/B test lift with confidence intervals" loading="lazy">
                         <figcaption>Pricing A/B test result</figcaption>
                     </figure>
+
+                    <h3 id="data">Where the data comes from</h3>
+                    <p>Every number below is public and can be traced to its filing. The full write-up, with every source URL, field definition and processing step, is in <a href="https://github.com/JonathanVelez-code/cruise-pricing-forecast/blob/main/docs/DATA_SOURCES.md" target="_blank" rel="noopener noreferrer">DATA_SOURCES.md</a> on GitHub.</p>
+                    <h4>Companies</h4>
+                    <div class="data-table">
+                    <table>
+                        <thead><tr><th>Company</th><th>Ticker</th><th>SEC CIK</th><th>Main brands</th><th>Capacity metric</th><th>Quarters</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>Royal Caribbean Cruises Ltd.</strong></td><td>RCL</td><td>0000884887</td><td>Royal Caribbean International, Celebrity, Silversea</td><td>APCD</td><td>39 (Q1 2017 &ndash; Q3 2026)</td></tr>
+                            <tr><td><strong>Norwegian Cruise Line Holdings Ltd.</strong></td><td>NCLH</td><td>0001513761</td><td>Norwegian, Oceania, Regent Seven Seas</td><td>Capacity Days</td><td>34 (Q1 2016 &ndash; Q3 2026)</td></tr>
+                            <tr><td><strong>Carnival Corporation &amp; plc</strong></td><td>CCL</td><td>0000815097</td><td>Carnival, Princess, Holland America, AIDA, Costa, P&amp;O, Cunard, Seabourn</td><td>ALBDs</td><td>29 (Aug 2016 &ndash; Aug 2026)</td></tr>
+                        </tbody>
+                    </table>
+                    </div>
+                    <p>102 company-quarters in total, 83 of them normal operations. The 19 quarters from March 2020 to December 2022, when sailings were suspended and then ramped back up, are flagged and left out of averages and models.</p>
+                    <h4>Sources</h4>
+                    <div class="data-table">
+                    <table>
+                        <thead><tr><th>Source</th><th>What it provides</th><th>Coverage</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>SEC EDGAR</strong> 10-Q and 10-K filings</td><td>Operating statistics: passengers carried, passenger cruise days, capacity days, occupancy</td><td>About 130 filings, 2016&ndash;2026</td></tr>
+                            <tr><td><strong>SEC XBRL</strong> company facts API</td><td>Total revenue per quarter</td><td>2016 &ndash; Q3 2026</td></tr>
+                            <tr><td><strong>U.S. Bureau of Labor Statistics</strong></td><td>CPI for airline fares (<code>CUSR0000SETG01</code>) and the unemployment rate (<code>LNS14000000</code>)</td><td>Monthly, Jan 2015 &ndash; Oct 2026</td></tr>
+                            <tr><td><strong>University of Michigan</strong> Surveys of Consumers</td><td>Index of Consumer Sentiment</td><td>Monthly, Jan 2014 &ndash; Nov 2026</td></tr>
+                        </tbody>
+                    </table>
+                    </div>
+                    <h4>How the real dataset is built</h4>
+                    <ol class="article__list">
+                        <li><strong>List and download</strong> every 10-Q and 10-K since 2016 for each company from SEC EDGAR, and cache them locally (about 250 MB).</li>
+                        <li><strong>Parse the operating statistics tables:</strong> the rows for passengers carried, passenger cruise days (PCD), capacity (APCD, ALBDs or Capacity Days) and occupancy.</li>
+                        <li><strong>Handle units:</strong> Carnival reports in millions in recent filings and thousands in older ones, so each row's unit label is read and the numbers are scaled. Older Carnival filings don't report PCD, so it's calculated as occupancy &times; capacity.</li>
+                        <li><strong>Build the fourth quarter:</strong> annual reports only give full-year totals, so Q4 = full year (10-K) &minus; the first nine months (Q3 10-Q year-to-date). This added 18 fourth quarters.</li>
+                        <li><strong>Add revenue</strong> from the XBRL API, combining three revenue tags because the tag changed with the 2018 accounting rules.</li>
+                        <li><strong>Check quality:</strong> drop any quarter whose reported occupancy doesn't equal PCD &divide; capacity within 2 points. This caught one misread row (Norwegian Q3 2022).</li>
+                        <li><strong>Flag COVID-19 quarters</strong> and save one row per company per quarter.</li>
+                    </ol>
+                    <h4>What the data looks like: latest quarter for each company</h4>
+                    <div class="data-table">
+                    <table>
+                        <thead><tr><th>Company</th><th>Quarter ending</th><th>Passengers</th><th>Passenger cruise days</th><th>Capacity days</th><th>Occupancy</th><th>Revenue</th><th>Revenue per passenger day</th></tr></thead>
+                        <tbody>
+                            <tr><td>Royal Caribbean</td><td>Sep 30, 2026</td><td>2,676,480</td><td>16,692,392</td><td>14,844,688</td><td>112.4%</td><td>$5.59B</td><td>$334.94</td></tr>
+                            <tr><td>Norwegian</td><td>Sep 30, 2026</td><td>983,214</td><td>7,204,938</td><td>6,766,454</td><td>106.5%</td><td>$2.95B</td><td>$408.99</td></tr>
+                            <tr><td>Carnival</td><td>Aug 31, 2026</td><td>3.9M</td><td>27.9M</td><td>24.9M</td><td>111.8%</td><td>$8.44B</td><td>$302.33</td></tr>
+                        </tbody>
+                    </table>
+                    </div>
+                    <p>Occupancy above 100% is normal for cruise lines: capacity counts two guests per cabin, and some cabins hold three or four.</p>
+                    <h4>What the real data shows: 2019 vs. the last four quarters</h4>
+                    <div class="data-table">
+                    <table>
+                        <thead><tr><th>Company</th><th>Occupancy</th><th>Revenue per passenger day</th><th>Change</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>Royal Caribbean</strong></td><td>108.1% &rarr; 109.7%</td><td>$243.8 &rarr; $309.7</td><td><strong>+27%</strong></td></tr>
+                            <tr><td>Norwegian</td><td>107.4% &rarr; 103.6%</td><td>$312.7 &rarr; $376.0</td><td>+20%</td></tr>
+                            <tr><td>Carnival</td><td>107.7% &rarr; 105.1%</td><td>$225.3 &rarr; $267.9</td><td>+19%</td></tr>
+                        </tbody>
+                    </table>
+                    </div>
+                    <p>Royal Caribbean grew revenue per guest-day the most of the three, while keeping its ships at least as full as in 2019. That growth is the work of pricing and revenue management.</p>
+                    <h4>How the real data is used</h4>
+                    <ul class="article__list">
+                        <li><strong>Real-data forecast:</strong> predicts next quarter's revenue per passenger day from the same quarter last year, recent growth, seasonality, and the economic indicators lagged one quarter, so only information available beforehand is used. The model is a damped growth trend plus a ridge-regression adjustment, tested walk-forward on Q2 2024 &ndash; Q3 2026 (28 company-quarters, 10 of them Royal Caribbean), with its settings chosen by a nested walk-forward inside the training data.</li>
+                        <li><strong>Calibration:</strong> the synthetic booking generator was tuned until its quarterly load factor matched the filings: Q1 108.9% vs. Royal Caribbean's 107.0%, Q2 109.7% vs. 108.5%, Q3 111.8% vs. 111.2%, Q4 106.4% vs. 106.9%.</li>
+                    </ul>
+                    <figure class="article__figure--chart">
+                        <img src="assets/img/cruise_calibration_vs_sec.png" alt="Bar chart: synthetic load factor by quarter compared with Royal Caribbean, Norwegian and Carnival reported occupancy" loading="lazy">
+                        <figcaption>Calibration: synthetic load factor vs. real reported occupancy by quarter</figcaption>
+                    </figure>
                     <h3>Limits</h3>
-                    <p>The guests' response to price in the A/B test is simulated, so it demonstrates the method rather than a real result. A real lift would need a live test.</p>
+                    <ul class="article__list">
+                        <li>The SEC data is quarterly and company-wide. It doesn't show individual sailings, ships or cabin prices, which is why the booking-level analysis uses calibrated synthetic data.</li>
+                        <li>Revenue per passenger day (total revenue &divide; passenger cruise days) is a close stand-in for the companies' own Net Yield, but not identical.</li>
+                        <li>Carnival's fiscal quarters end in February, May, August and November, and are matched to the nearest calendar quarter.</li>
+                        <li>The guests' response to price in the A/B test is simulated, so it demonstrates the method rather than a real result.</li>
+                    </ul>
                 </div>
             </div>
         </div>
