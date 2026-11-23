@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="description" content="Cruise cabin demand forecasting and a pricing A/B test on 500K synthetic bookings, built with Python, XGBoost, SQL and Power BI. A project by Jonathan Velez.">
+    <meta name="description" content="Cruise cabin demand forecasting and a pricing A/B test on 510K synthetic bookings calibrated to real SEC filings, built with Python, XGBoost, SQL and Power BI. A project by Jonathan Velez.">
     <meta name="author" content="Jonathan Velez">
     <script>try{var t=localStorage.getItem('jv-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
     <title>Cruise Cabin Pricing &amp; Demand Forecasting | Jonathan Velez</title>
@@ -13,7 +13,7 @@
     <link rel="icon" href="favicon.svg" type="image/svg+xml">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Cruise Cabin Pricing &amp; Demand Forecasting | Jonathan Velez">
-    <meta property="og:description" content="Cruise cabin demand forecasting and a pricing A/B test on 500K synthetic bookings, built with Python, XGBoost, SQL and Power BI. A project by Jonathan Velez.">
+    <meta property="og:description" content="Cruise cabin demand forecasting and a pricing A/B test on 510K synthetic bookings calibrated to real SEC filings, built with Python, XGBoost, SQL and Power BI. A project by Jonathan Velez.">
     <meta property="og:url" content="https://jonathanwvelez.com/project3.html">
     <meta property="og:image" content="https://jonathanwvelez.com/assets/img/cruise_error_by_horizon.png">
     <script>if(location.protocol==='http:'&&!/^(localhost|127\.0\.0\.1)$/.test(location.hostname)){location.replace('https://'+location.host+location.pathname+location.search+location.hash);}</script>
@@ -115,21 +115,31 @@
                             <li>GitHub Actions</li>
                         </ul>
                     </div>
-                    <p>An end-to-end revenue management project for a cruise line. It runs on about 500,000 synthetic bookings that the project generates to behave like real cruise demand: seasonality, booking curves, dynamic pricing and cancellations. It isn't data from any cruise line, and the project isn't affiliated with any company.</p>
+                    <p>An end-to-end revenue management project for a cruise line. Cruise lines don't publish booking-level data, so the project generates about 510,000 synthetic bookings with seasonality, booking curves, dynamic pricing and cancellations, and calibrates them to real quarterly numbers from three major cruise lines' SEC filings. No real booking data is used, and the project isn't affiliated with any company.</p>
                     <h3>What it does</h3>
                     <ul class="article__list">
-                        <li>Cleans the raw bookings with a pandas ETL pipeline (512,207 rows in, 511,119 out) and logs every data-quality rule it applies.</li>
+                        <li>Pulls ten years of quarterly occupancy, passenger cruise days and revenue from three cruise lines' 10-Q and 10-K filings (SEC EDGAR), and tunes the synthetic data to match.</li>
+                        <li>Cleans the raw bookings with a pandas ETL pipeline (510,409 rows in, 509,320 out) and logs every data-quality rule it applies.</li>
                         <li>Answers reporting questions in SQL with DuckDB: occupancy, revenue per cabin, new vs. repeat guests, and price by booking window.</li>
                         <li>Forecasts final occupancy for every sailing and cabin category with XGBoost, tested on the most recent six months of sailings.</li>
                         <li>Runs a pricing A/B test with CUPED variance reduction and a power analysis.</li>
-                        <li>Exports Power BI-ready tables and reruns the whole pipeline every week with GitHub Actions.</li>
+                        <li>Presents everything in a 5-page Power BI dashboard, and reruns the whole pipeline every week with GitHub Actions.</li>
                     </ul>
                     <h3>Results</h3>
                     <ul class="article__list">
-                        <li><strong>Forecast error of 3.9% vs. 10.4%</strong> for the last-year-pace baseline, 62% lower. Six months out, it's 5.2% vs. 22.1%.</li>
-                        <li>The pricing test (+5% when a cabin category is at least 70% booked 60 days out) showed <strong>no significant lift</strong> (p = 0.33), so the recommendation is not to roll it out broadly.</li>
-                        <li>CUPED cut the test's variance by 95%.</li>
+                        <li>The synthetic load factor is <strong>within about 2 points of the real reported occupancy</strong> in every quarter: ships sail 107–112% full year-round, and seasonality shows up in price, not empty cabins.</li>
+                        <li><strong>Forecast error of 3.3% vs. 8.0%</strong> for the last-year-pace baseline, 58% lower. Six months out, it's 4.0% vs. 17.6%.</li>
+                        <li>The pricing test (+5% when a cabin category is at least 70% booked 60 days out) showed <strong>no significant lift</strong> (p = 0.43), so the recommendation is not to roll it out broadly.</li>
+                        <li>CUPED cut the test's variance by 93%.</li>
                     </ul>
+                    <figure class="article__figure--chart">
+                        <img src="assets/img/cruise_powerbi_overview.jpg" alt="Power BI dashboard: cruise revenue overview with occupancy, load factor and seasonality" loading="lazy">
+                        <figcaption>Power BI dashboard: revenue overview</figcaption>
+                    </figure>
+                    <figure class="article__figure--chart">
+                        <img src="assets/img/cruise_seasonality.png" alt="Chart: cabins sold stay near full every month while price per cabin-night swings with the season" loading="lazy">
+                        <figcaption>Ships stay nearly full all year; price carries the seasonality</figcaption>
+                    </figure>
                     <figure class="article__figure--chart">
                         <img src="assets/img/cruise_error_by_horizon.png" alt="Bar chart of forecast error by days before sailing, model vs. baseline" loading="lazy">
                         <figcaption>Forecast error by how far ahead the forecast is made</figcaption>

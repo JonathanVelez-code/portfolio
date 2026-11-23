@@ -122,6 +122,7 @@
                         <li>Predicts cancellations with logistic regression and XGBoost, using only what's known when the booking is made. Columns that leak the outcome, such as reservation status, assigned room and country, are left out.</li>
                         <li>Validates by time: trains on arrivals through December 2016 and tests on January to August 2017.</li>
                         <li>Turns the predictions into decisions: which bookings to target, how many rooms to overbook safely, and where a deposit would help.</li>
+                        <li>Presents the results in a 4-page Power BI dashboard.</li>
                     </ul>
                     <h3>Results</h3>
                     <ul class="article__list">
@@ -131,6 +132,10 @@
                         <li>The riskiest 20% of bookings hold <strong>44% of all cancellations</strong>.</li>
                         <li>The weekly cancellation forecast has 12.7% error vs. 16.1% for historical averages. A 95%-confidence overbooking level would have overshot in only 2.8% of hotel-weeks.</li>
                     </ul>
+                    <figure class="article__figure--chart">
+                        <img src="assets/img/hotel_powerbi_overview.jpg" alt="Power BI dashboard: hotel cancellation overview" loading="lazy">
+                        <figcaption>Power BI dashboard: cancellation overview</figcaption>
+                    </figure>
                     <figure class="article__figure--chart">
                         <img src="assets/img/hotel_cancel_by_lead_time.png" alt="Chart of cancellation rate by booking window for each hotel" loading="lazy">
                         <figcaption>Cancellation rate by booking window</figcaption>
@@ -166,7 +171,7 @@
               <div class="col-md-6 col-lg-7 project-card__info">
                 <h3 class="project-card__title">Cruise Cabin Pricing &amp; Demand Forecasting</h3>
                 <p class="project-card__description">
-                  A revenue management pipeline on 500K synthetic cruise bookings. The XGBoost demand forecast has 62% less error than a last-year-pace baseline, and a pricing A/B test uses CUPED and a power analysis.
+                  A revenue management pipeline on 510K synthetic cruise bookings, calibrated to real cruise-line SEC filings. The XGBoost demand forecast has 58% less error than a last-year-pace baseline, and a pricing A/B test uses CUPED and a power analysis.
                 </p>
                 <p class="project-card__stack">Used stack:</p>
                 <ul class="tags">
