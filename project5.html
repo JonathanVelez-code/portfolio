@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="A Java and Spring Boot service that keeps orders consistent between an ERP and a CRM, with JPA transactions, retries, an audit log and a nightly Spring Batch reconciliation job. A project by Jonathan Velez.">
+    <meta name="author" content="Jonathan Velez">
+    <script>try{var t=localStorage.getItem('jv-theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+    <title>Enterprise Order Integration Service | Jonathan Velez</title>
+    <link rel="canonical" href="https://jonathanwvelez.com/project5.html">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Enterprise Order Integration Service | Jonathan Velez">
+    <meta property="og:description" content="A Java and Spring Boot service that keeps orders consistent between an ERP and a CRM, with JPA transactions, retries, an audit log and a nightly Spring Batch reconciliation job. A project by Jonathan Velez.">
+    <meta property="og:url" content="https://jonathanwvelez.com/project5.html">
+    <meta property="og:image" content="https://jonathanwvelez.com/assets/img/order_integration_flow.png">
+    <script>if(location.protocol==='http:'&&!/^(localhost|127\.0\.0\.1)$/.test(location.hostname)){location.replace('https://'+location.host+location.pathname+location.search+location.hash);}</script>
+    <link rel="stylesheet" href="assets/css/color.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono|Inconsolata" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/2.0.46/css/materialdesignicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/themes.css">
+    <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+
+<body>
+
+    <!--Switcher-->
+    <div class="style-switcher">
+        <span class="style-switcher__control" role="button" tabindex="0" aria-label="Change color theme"></span>
+        <div class="style-switcher__list" role="group" aria-label="Color themes">
+            <button type="button" class="style-switcher__link" data-theme="violet" title="Violet" aria-label="Violet theme" aria-pressed="false"></button>
+            <button type="button" class="style-switcher__link" data-theme="ocean" title="Ocean" aria-label="Ocean theme" aria-pressed="false"></button>
+            <button type="button" class="style-switcher__link" data-theme="sunset" title="Sunset" aria-label="Sunset theme" aria-pressed="false"></button>
+            <button type="button" class="style-switcher__link" data-theme="emerald" title="Emerald" aria-label="Emerald theme" aria-pressed="false"></button>
+            <button type="button" class="style-switcher__link" data-theme="berry" title="Berry" aria-label="Berry theme" aria-pressed="false"></button>
+            <button type="button" class="style-switcher__link" data-theme="aurora" title="Aurora" aria-label="Aurora theme" aria-pressed="false"></button>
+        </div>
+    </div>
+    <!--Switcher-->
+
+    <!--Main menu-->
+    <div class="menu">
+        <div class="container">
+            <div class="row">
+                <div class="menu__wrapper d-none d-lg-block col-md-12">
+                    <nav class="">
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="#other_posts">Other projects</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <div class="menu__wrapper col-md-12 d-lg-none">
+                    <div class="menu__mobile-button">
+                        <span><i class="fa fa-bars" aria-hidden="true"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Main menu-->
+
+    <!-- Mobile menu -->
+    <div class="mobile-menu d-lg-none">
+        <div class="container">
+            <div class="mobile-menu__close">
+                <span><i class="mdi mdi-close" aria-hidden="true"></i></span>
+            </div>
+            <nav class="mobile-menu__wrapper">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#other_posts">Other projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    <!-- Mobile menu -->
+
+    <!--Header-->
+    <header class="background blog-header" style="background-image: url(assets/img/img_bg_main.jpg)">
+        <div class="container blog-header__inner">
+            <a class="blog-header__name" href="index.html">Jonathan Velez</a>
+            <p class="blog-header__role">Software Engineer, Data Analyst</p>
+        </div>
+    </header>
+    <!--Header-->
+
+    <!--Article-->
+    <div class="container">
+        <div class="article">
+            <div class="row">
+                <div class="col-md-12">
+                    <a class="article__back-link" href="index.html"><i class="fa fa-long-arrow-left"
+                            aria-hidden="true"></i>Back</a>
+                    <h2 class="article__title">Enterprise Order Integration Service</h2>
+
+                    <div class="portfolio-modal__stack">
+                        <div class="expanding">
+                            <p>Stack:</p>
+                            <a href="https://github.com/JonathanVelez-code/order-integration-service" target="_blank" rel="noopener noreferrer"
+                                class="project-card__link">View Code</a>
+                        </div>
+                        <ul class="tags spacing">
+                            <li>Java</li>
+                            <li>Spring Boot</li>
+                            <li>Spring Batch</li>
+                            <li>JPA / Hibernate</li>
+                            <li>Spring Retry</li>
+                            <li>JUnit</li>
+                            <li>Docker</li>
+                            <li>GitHub Actions</li>
+                            <li>Gradle</li>
+                        </ul>
+                    </div>
+                    <p>A Spring Boot service that keeps orders consistent between an ERP (the system of record) and a CRM. It's a common enterprise integration problem: two systems hold the same orders, and they drift apart when a call fails or someone edits one side. The ERP and CRM are simulated in memory behind Java interfaces, so the service runs anywhere, and real clients could be plugged in without changing the rest of the code.</p>
+                    <h3>What it does</h3>
+                    <ul class="article__list">
+                        <li>Every 15 minutes, pulls changed orders from the ERP and saves each one in its own database transaction, together with an audit record.</li>
+                        <li>Pushes each change to the CRM with automatic retries and exponential backoff (Spring Retry). If the CRM stays down, the order is marked pending instead of blocking the sync.</li>
+                        <li>Every night, a Spring Batch job compares every ERP order with the CRM in chunks of 50, records each difference, and repairs the CRM. An order that keeps failing is skipped and logged, so one bad record doesn't stop the run.</li>
+                        <li>Provides a REST API to run the sync or the reconciliation on demand and to view orders, differences and the audit log.</li>
+                        <li>Builds, tests and packages a Docker image on every push with GitHub Actions, and includes a Docker Compose setup with PostgreSQL.</li>
+                    </ul>
+                    <h3>Results</h3>
+                    <ul class="article__list">
+                        <li>On the demo data (200 orders, with the CRM copy missing 10 orders and out of date on 8), the first reconciliation <strong>found and repaired all 18</strong>, and a second run found none.</li>
+                        <li><strong>18 JUnit tests</strong>, including one that proves a failed audit write rolls back the order change, and an end-to-end test of the real Spring Batch job.</li>
+                    </ul>
+                    <figure class="article__figure--chart">
+                        <img src="assets/img/order_integration_flow.png" alt="Diagram: ERP orders sync to the CRM every 15 minutes through a transactional sync with retries, and a nightly Spring Batch job compares and repairs the CRM" loading="lazy">
+                        <figcaption>How the sync and the nightly reconciliation fit together</figcaption>
+                    </figure>
+                    <h3>Design decisions</h3>
+                    <ul class="article__list">
+                        <li><strong>One transaction per order</strong>, so one bad order doesn't roll back the others.</li>
+                        <li><strong>The order change and its audit record commit together</strong>, so the audit log can never miss a change.</li>
+                        <li><strong>CRM calls happen outside the database transaction</strong>, so a slow CRM never holds database locks.</li>
+                        <li><strong>A sync watermark saved only at the end</strong>: if a sync crashes halfway, the next run safely re-processes those orders.</li>
+                        <li><strong>Money compared with BigDecimal.compareTo</strong>, so 10.0 and 10.00 aren't reported as different, and <strong>optimistic locking</strong> with @Version.</li>
+                    </ul>
+                    <h3>Limits</h3>
+                    <p>The ERP and CRM are simulated in memory, and the service runs locally and in Docker rather than in a production environment. Next steps would be Flyway migrations, Testcontainers tests against real PostgreSQL, and an outbox table so a CRM push survives an app crash.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--Article-->
+
+    <!--Other Posts-->
+    <section id="posts" class="container section">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 id="other_posts" class="section__title">Other Projects</h2>
+            </div>
+        </div>
+        <div class="portfolio-cards">
+            <div class="row project-card" data-href="project3.html">
+              <div class="col-md-6 col-lg-5 project-card__img project-card__img--chart">
+                <img src="assets/img/cruise_error_by_horizon.png" alt="Bar chart: forecast error by days before sailing, XGBoost model vs last-year baseline" loading="lazy">
+              </div>
+              <div class="col-md-6 col-lg-7 project-card__info">
+                <h3 class="project-card__title">Cruise Cabin Pricing &amp; Demand Forecasting</h3>
+                <p class="project-card__description">
+                  Forecasts Royal Caribbean's real revenue per guest per day from ten years of SEC filings, with 1.2% error. Also includes a demand forecast and a pricing A/B test on 510K synthetic bookings calibrated to those filings.
+                </p>
+                <p class="project-card__stack">Used stack:</p>
+                <ul class="tags">
+                  <li>Python</li>
+                  <li>pandas</li>
+                  <li>XGBoost</li>
+                  <li>SQL</li>
+                  <li>DuckDB</li>
+                  <li>Power BI</li>
+                  <li>GitHub Actions</li>
+                </ul>
+                <a href="https://github.com/JonathanVelez-code/cruise-pricing-forecast" class="project-card__link" target="_blank" rel="noopener noreferrer">View Code</a>
+              </div>
+            </div>
+            <div class="row project-card" data-href="project4.html">
+              <div class="col-md-6 col-lg-5 project-card__img project-card__img--chart">
+                <img src="assets/img/hotel_gains_curve.png" alt="Gains curve: the riskiest 20% of bookings hold 44% of cancellations" loading="lazy">
+              </div>
+              <div class="col-md-6 col-lg-7 project-card__info">
+                <h3 class="project-card__title">Hotel Booking Cancellation &amp; Revenue Analysis</h3>
+                <p class="project-card__description">
+                  An analysis of 119,390 real hotel bookings: SQL on cancellations and lost revenue, a cancellation model built without leaky features (ROC AUC 0.83), and overbooking and deposit recommendations.
+                </p>
+                <p class="project-card__stack">Used stack:</p>
+                <ul class="tags">
+                  <li>Python</li>
+                  <li>pandas</li>
+                  <li>XGBoost</li>
+                  <li>scikit-learn</li>
+                  <li>SQL</li>
+                  <li>DuckDB</li>
+                  <li>Power BI</li>
+                </ul>
+                <a href="https://github.com/JonathanVelez-code/hotel-cancellation-analysis" class="project-card__link" target="_blank" rel="noopener noreferrer">View Code</a>
+              </div>
+            </div>
+            <div class="row project-card" data-href="project1.html">
+              <div class="col-md-6 col-lg-5 project-card__img">
+                <img src="assets/img/project1.jpg" alt="Aircraft Logistics Management System maintenance calendar" loading="lazy">
+              </div>
+              <div class="col-md-6 col-lg-7 project-card__info">
+                <h3 class="project-card__title">Aircraft Logistics Management System (US Air Force)</h3>
+                <p class="project-card__description">
+                  A Django web app my team of three built from scratch for an Air Force logistics team. It schedules aircraft maintenance, tracks parts inventory and imports old maintenance logs, cutting manual work by 40%.
+                </p>
+                <p class="project-card__stack">Used stack:</p>
+                <ul class="tags">
+                  <li>Django</li>
+                  <li>Python</li>
+                  <li>Html5</li>
+                  <li>Css3</li>
+                  <li>JavaScript</li>
+                </ul>
+                <a href="https://github.com/JonathanVelez-code/ROUS" class="project-card__link" target="_blank" rel="noopener noreferrer">View Code</a>
+              </div>
+            </div>
+            <div class="row project-card" data-href="project2.html">
+              <div class="col-md-6 col-lg-5 project-card__img">
+                <img src="assets/img/project2.jpg" alt="SipSpot coffee shop app home page" loading="lazy">
+              </div>
+              <div class="col-md-6 col-lg-7 project-card__info">
+                <h3 class="project-card__title">SipSpot Coffee Shops</h3>
+                <p class="project-card__description">
+                  A Node.js and Express web app that connects people with small, local coffee shops across Florida, with reviews, a Mapbox map and Stripe checkout.
+                </p>
+                <p class="project-card__stack">Used stack:</p>
+                <ul class="tags">
+                  <li>Node.js</li>
+                  <li>Express</li>
+                  <li>EJS</li>
+                  <li>JavaScript</li>
+                  <li>MongoDB</li>
+                  <li>Stripe</li>
+                  <li>Mapbox</li>
+                  <li>Bootstrap</li>
+                </ul>
+                <a href="https://github.com/JonathanVelez-code/SipSpot" class="project-card__link" target="_blank" rel="noopener noreferrer">View Code</a>
+              </div>
+            </div>
+        </div>
+
+    </section>
+
+    <!--Other Posts-->
+
+    <!--Contact-->
+    <div class="background" style="background-image: url(assets/img/img_bg_main.jpg)">
+      <div id="contact" class="container section">
+        <div class="row">
+          <div class="col-md-12">
+            <p id="contacts_header" class="section__title text_center">Get in touch</p>
+          </div>
+        </div>
+        <div class="row contacts contacts--centered">
+          <div class="col-12">
+            <a class="contacts__email" href="mailto:VelezWJonathan@gmail.com"><i class="fa-solid fa-envelope" aria-hidden="true"></i>VelezWJonathan@gmail.com</a>
+            <ul class="contacts__social">
+              <li><a href="https://www.linkedin.com/in/jonathanwilliamvelez/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin" aria-hidden="true"></i>LinkedIn</a></li>
+              <li><a href="https://github.com/JonathanVelez-code" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github" aria-hidden="true"></i>GitHub</a></li>
+            </ul>
+          </div>
+        </div>
+        <footer class="footer footer--contact">
+          <p>&copy; 2026 Jonathan Velez. All Rights Reserved</p>
+        </footer>
+      </div>
+    </div>
+    <!--Contact-->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="assets/js/menu.js"></script>
+    <script src="assets/js/jquery.waypoints.js"></script>
+    <script src="assets/js/section.js"></script>
+    <script src="assets/js/mobile-menu.js"></script>
+    <script src="assets/js/style-switcher.js"></script>
+</body>
+
+</html>
