@@ -113,50 +113,45 @@
                             <li>JavaScript</li>
                         </ul>
                     </div>
-                    <p> Aircraft Logistics Management is a Django application built for the Air Force Logistics team
-                        Tesseract. My team of three built this project from scratch, from the design to the
-                        functionality. This aircraft maintenance application required heavy lifting to schedule a fleet
-                        of aircraft, keeping track of when the next tune-up is needed, viewing upcoming maintenance and
-                        deployment on the calendar, and managing inventory for parts.</p>
+                    <p>Aircraft Logistics Management is a Django web application built for Tesseract, an Air Force
+                        logistics team. My team of three built it from scratch, from the design to the finished
+                        features, and I led the team and mentored the other two developers. The app schedules a fleet
+                        of aircraft, tracks when each one needs its next maintenance, shows upcoming maintenance and
+                        deployments on a calendar, and manages the parts inventory.</p>
                     <figure>
                         <img src="assets/img/calendar_page.jpg" alt="Calendar of scheduled aircraft maintenance" loading="lazy">
                         <figcaption>Calendar of scheduled aircraft maintenance</figcaption>
                     </figure>
-                    <h3>Project Purpose and Goal</h3>
-                    <p> This project involved three key phases of development. In the initial phase, my team and I
-                        focused on understanding the specific needs of the Air Force organizers. We engaged closely with
-                        the organizers to refine the application's design through iterative feedback. During the second
-                        phase, we employed Agile methodology to manage the project's lifecycle. By conducting regular
-                        sprints and maintaining close communication with the team. In the final phase, we conducted a
-                        thorough walk-through of the application with the organizers. Based on their feedback, we
-                        implemented a highly requested feature, showcasing our commitment to delivering the best project
-                        for the Air Force.</p>
-                    <h3>Web Stack and Explanation</h3>
-                    <p> Django was the optimal choice for our web application due to its scalability, essential for
-                        deployment across numerous Air Force bases. Python played a crucial role in extracting old
-                        maintenance logs and integrating them into various database tables. Additionally, adhering to
-                        the DRY (Don't Repeat Yourself) principle enabled us to efficiently develop and complete the
-                        application within a tight timeframe.</p>
+                    <h3>Results</h3>
+                    <ul class="article__list">
+                        <li>Cut the team's manual work by <strong>40%</strong> by importing their old maintenance logs into the app.</li>
+                        <li>Reduced user errors by <strong>75%</strong> by redesigning the data-entry forms.</li>
+                        <li>Documented the REST APIs in Swagger/OpenAPI.</li>
+                    </ul>
+                    <h3>How we built it</h3>
+                    <p>We worked in three phases. First, we met with the Air Force organizers to understand what they
+                        needed, and refined the design with their feedback. Then we built the app in Agile sprints,
+                        with regular check-ins as a team. Finally, we walked the organizers through the finished app
+                        and added the feature they asked for most.</p>
+                    <p>We chose Django because it scales well, which mattered for an app meant to run across many Air
+                        Force bases. Python did the heavy lifting on the data side: a CSV import pulls the old
+                        maintenance logs into the database tables.</p>
                     <figure>
                         <img src="assets/img/import_page.jpg" alt="Page for importing aircraft maintenance logs" loading="lazy">
                         <figcaption>Import aircraft maintenance logs</figcaption>
                     </figure>
-                    <h3>Problems and Thought Process</h3>
-                    <p> Like most projects, we ran into a few bumps along the way, one particularly difficult area was
-                        the organization of the old maintenance document to be integrated into the database. Requiring
-                        an algorithmic solution to parse through unnecessary data points within the document. Also,
-                        developed a new algorithmic solution to apply the Air Force’s Theory of Constraints methodology.
-                    </p>
+                    <h3>Challenges</h3>
+                    <p>The hardest part was the old maintenance records. They were full of data we didn't need, so we
+                        wrote a parser that pulls out only the useful fields before loading them into the database. We
+                        also built the scheduling logic around the Air Force's Theory of Constraints methodology.</p>
                     <figure>
                         <img src="assets/img/schedule_page.jpg" alt="Aircraft maintenance scheduling table" loading="lazy">
                         <figcaption>Aircraft maintenance scheduling table</figcaption>
                     </figure>
-                    <h3>Lessons Learned</h3>
-                    <p> I could spend all day describing the lessons that I learned while working on this project, but
-                        the most important ones involved my newfound understanding of the Django framework. As my first
-                        large project using Django, I learned a lot of lessons regarding code structure and
-                        organization. Understanding the various phases of the development process was particularly
-                        beneficial, especially when using the Agile methodology.</p>
+                    <h3>What I learned</h3>
+                    <p>This was my first large Django project, so I learned a lot about structuring and organizing
+                        code. I also saw how much smoother a project runs with Agile: short sprints, regular check-ins,
+                        and steady feedback from the people who will use the app.</p>
                 </div>
             </div>
         </div>
@@ -178,7 +173,7 @@
               <div class="col-md-6 col-lg-7 project-card__info">
                 <h3 class="project-card__title">Cruise Cabin Pricing &amp; Demand Forecasting</h3>
                 <p class="project-card__description">
-                  A revenue management pipeline on 510K synthetic cruise bookings, calibrated to real cruise-line SEC filings. The XGBoost demand forecast has 58% less error than a last-year-pace baseline, and a pricing A/B test uses CUPED and a power analysis.
+                  Forecasts Royal Caribbean's real revenue per guest per day from ten years of SEC filings, with 1.2% error. Also includes a demand forecast and a pricing A/B test on 510K synthetic bookings calibrated to those filings.
                 </p>
                 <p class="project-card__stack">Used stack:</p>
                 <ul class="tags">
@@ -222,7 +217,7 @@
               <div class="col-md-6 col-lg-7 project-card__info">
                 <h3 class="project-card__title">SipSpot Coffee Shops</h3>
                 <p class="project-card__description">
-                  SipSpot bridges the gap between large, established coffee brands...
+                  A Node.js and Express web app that connects people with small, local coffee shops across Florida, with reviews, a Mapbox map and Stripe checkout.
                 </p>
                 <p class="project-card__stack">Used stack:</p>
                 <ul class="tags">
